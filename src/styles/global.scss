@@ -1,0 +1,7 @@
+// Path to Bulma's sass folder
+@use "bulma/sass" with (
+  $family-primary: '"Poppins", sans-serif',
+);
+
+// Import the Google Font
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,700");

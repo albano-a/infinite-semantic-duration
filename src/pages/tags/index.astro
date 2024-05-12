@@ -6,34 +6,12 @@ const pageTitle = "Tag Index";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <ul>
-    <div class="tags">
-      {
-        tags.map((tag) => (
-          <p class="tag">
-            <a href={`/tags/${tag}`}>{tag}</a>
-          </p>
-        ))
-      }
-    </div>
-  </ul>
+  <div class="tags are-medium">
+    {
+      tags.map((tag) => (
+        <a href={`/tags/${tag}`} class="tag is-rounded has-text-weight-bold">{tag}</a>
+      ))
+    }
+  </div>
 </BaseLayout>
-<style>
-  a {
-    color: #00539f;
-  }
 
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
-  }
-</style>

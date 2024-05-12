@@ -1,10 +1,43 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Greeting from "../components/Greeting";
-const pageTitle = "Home Page";
+import BlogPost from "../components/BlogPost.astro";
+const pageTitle = "Infinite Semantic Duration";
+const allPosts = await Astro.glob("../pages/posts/*.md");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
-  <Greeting client:load messages={["Hi", "Hello", "Hello there!", "Hey there"]} />
+  <Greeting
+    client:load
+    messages={[
+      "Where is your crown, King Nothing?",
+      "I'm your life, and I no longer care.",
+      "I rule the midnight air, the destroyer!",
+      "MASTER! MASTER!",
+      "Exit light, enter night.",
+      "Life it seems, will fade away. Drifting further every day.",
+      "Forever trusting who we are, and nothing else matters.",
+      "All that is, ever, ever was, will be ever twisting, turning through the never.",
+      "You can take your fucking time",
+      "And though this is tragic, at least I found the end",
+    ]}
+  />
+  <hr />
+  <p class="is-size-4 has-text-justified">
+    Welcome to Infinite Semantic Duration. Here, you will find the small corner
+    of the internet owned by the creator of this blog (or Netlify, but
+    whatever). Here I will post random stuff, about coding, geophysics, and etc.
+    Click on Blog to see the posts, or click down bellow
+  </p>
+  <ul>
+    {
+      allPosts.map((post) => (
+        <BlogPost
+          url={post.url}
+          title={post.frontmatter.title}
+          date={post.frontmatter.pubDate}
+        />
+      ))
+    }
+  </ul>
 </BaseLayout>

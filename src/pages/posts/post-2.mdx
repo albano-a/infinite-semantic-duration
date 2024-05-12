@@ -1,0 +1,92 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: Binary Search Algorithm
+author: Andre Albano
+description: "What is Binary Search? How do I implement it?"
+image:
+  url: "https://docs.astro.build/assets/arc.webp"
+  alt: "Thumbnail of Astro arcs."
+pubDate: May 12, 2024
+tags: ["programming", "algorithm", "binary search", "python", "rust"]
+---
+
+import Latex from "../../components/Latex.astro";
+import LatexCenter from "../../components/LatexCenter.astro";
+
+Binary search works on sorted arrays. It begins by comparing an element in the middle of the array
+with the target value. If the target value matches the element, its position in the array is returned. If the target value is less than the element, the search continues in the lower half of the array. If the target value is greater than the element, the search continues in the upper half of the array. By doing this, the algorithm eliminates the half in which the target value cannot lie in each iteration.
+
+## Procedure
+
+Given an array <Latex formula='A' /> of <Latex formula='n' /> elements with values <Latex formula='A_{0}, A_{1}, A_{2},...,A_{n-1}' />
+sorted such that <Latex formula='A_{0} \le A_{1} \le A_{2} \le ... \le A_{n-1}' />, and target value <Latex formula='T' />, the following subroutine
+uses binary search to find the index of <Latex formula='T' /> in <Latex formula='A' />.:
+
+1. Set <Latex formula='L' /> to <Latex formula='0' /> and <Latex formula='R' /> to <Latex formula='n - 1' />
+   (<Latex formula='n' /> being the size of the array).
+
+2. If <Latex formula='L \gt R' />, the search terminates as unsuccessful.
+
+3. Set <Latex formula='m' /> (the position of the middle element) to the [floor](https://en.wikipedia.org/wiki/Floor_and_ceiling_functions)
+   of <Latex formula='\frac{L + R}{2}' />, which is the greates integer less than or equal to <Latex formula='\frac{L + R}{2}' />.
+
+4. If <Latex formula='A_{m} \lt T' />, set <Latex formula='L' /> to <Latex formula='m + 1' /> and go to step 2.
+
+5. If <Latex formula='A_{m} \gt T' />, set <Latex formula='R' /> to <Latex formula='m - 1' /> and go to step 2.
+
+6. Now <Latex formula='A_{m} = T' />, the search is done; return <Latex formula='m' />
+
+This iterative procedure keeps track of the search boundaries with the two variables <Latex formula='L' /> and <Latex formula='R' />. The pseudocode is available below:
+
+```pseudocode
+function binary_search(A, T) is
+	n = size(A)
+	L := 0
+	R := n - 1
+	while L <= R do
+		m := floor((L + R) / 2)
+		if A[m] < T then
+			L := m + 1
+		else if A[m] > T then
+			R := m - 1
+		else:
+			return m
+
+	return unsuccessful
+```
+
+## Implementations
+
+### Python
+
+```py
+import numpy as np
+
+def binarySearch(A, T):
+    n = len(A)
+    L = 0
+    R = n - 1
+
+    while L <= R:
+        m = int(np.floor((L + R) / 2))
+        if A[m] < T:
+            L = m + 1
+        elif A[m] > T:
+            R = m - 1
+        else:
+            return m
+
+    return "Unsuccessful"
+
+# Example
+M = np.arange(1, 10, 1)
+
+number = 2
+result = binarySearch(M, number)
+
+print(f"The value of {number} is in index [{result}].")
+```
+
+> Note: In python, it is necessary to convert the result of the `np.floor` function because python implicitly converts the integers into float.
+
+I will update this page with other implementations (Like in Rust, C++, JavaScript and etc.)

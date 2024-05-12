@@ -8,7 +8,7 @@ export default function Greeting({ messages }) {
 
   return (
     <div>
-      <h2 className="is-size-4 has-text-centered">{greeting}</h2>
+      <p className="is-size-4 has-text-centered">{greeting}</p>
       <div className="columns is-centered">
         <div className="column is-narrow is-full-mobile">
           <button

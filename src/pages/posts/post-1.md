@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: 'First'
-pubDate: May 12, 2024
-description: 'This is the first post of my new Astro blog.'
-author: 'Andre Albano'
+title: "First"
+pubDate: May 11, 2024
+description: "This is the first post of my new Astro blog."
+author: "Andre Albano"
 image:
-    url: 'https://docs.astro.build/assets/full-logo-dark.png'
-    alt: 'The full Astro logo.'
+  url: "https://docs.astro.build/assets/full-logo-dark.png"
+  alt: "The full Astro logo."
 tags: ["astro", "blogging", "learning in public"]
 ---
 

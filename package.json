@@ -11,10 +11,12 @@
     "build-bulma": "sass --load-path=node_modules src/styles/global.scss src/styles/global.css"
   },
   "dependencies": {
+    "@astrojs/mdx": "^3.0.0",
     "@astrojs/preact": "^3.3.0",
     "@astrojs/rss": "^4.0.5",
     "astro": "^4.8.2",
     "bulma": "^1.0.0",
+    "katex": "^0.16.10",
     "preact": "^10.21.0",
     "sass": "^1.77.1"
   }

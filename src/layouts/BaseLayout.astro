@@ -13,11 +13,39 @@ const { pageTitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/ISD.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="Blog about Geophysics and Programming" />
-    <meta name="keywords" content="geophysics, programming, development, python, blog" />
+    <meta
+      name="keywords"
+      content="geophysics, programming, development, python, blog"
+    />
     <meta name="author" content="Andre Albano" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <ViewTransitions />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://infinite-semantic-duration.netlify.app/"
+    />
+    <meta property="og:title" content="Infinite Semantic Duration" />
+    <meta
+      property="og:description"
+      content="Blog about Geophysics and Programming"
+    />
+    <meta property="og:image" content="/ISD.svg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="/Infinite Semantic Duration.svg" />
+    <meta
+      property="twitter:url"
+      content="https://infinite-semantic-duration.netlify.app/"
+    />
+    <meta property="twitter:title" content="Infinite Semantic Duration" />
+    <meta
+      property="twitter:description"
+      content="Blog about Geophysics and Programming"
+    />
+    <meta property="twitter:image" content="/ISD.svg" />
   </head>
   <body>
     <Header />

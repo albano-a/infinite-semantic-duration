@@ -17,7 +17,11 @@ const Navigation = () => {
   };
 
   return (
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <nav
+      class="navbar has-shadow"
+      role="navigation"
+      aria-label="main navigation"
+    >
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           <h1 style={brandStyle}> Infinite Semantic Duration </h1>{" "}

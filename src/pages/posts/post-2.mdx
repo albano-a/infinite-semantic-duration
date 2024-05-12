@@ -4,13 +4,14 @@ title: Binary Search Algorithm
 author: Andre Albano
 description: "This post covers how the algorithm works on sorted arrays, its procedure, and its implementation"
 pubDate: May 12, 2024
+lastUpdate: May 12, 2024
 tags: ["programming", "algorithm", "binary search", "python", "rust"]
 ---
 
 import Latex from "../../components/Latex.astro";
 import LatexCenter from "../../components/LatexCenter.astro";
 
-Binary search works on sorted arrays. It begins by comparing an element in the middle of the array
+Binary search is a search algorithm used to find the position of a value within a sorted array. It begins by comparing an element in the middle of the array
 with the target value. If the target value matches the element, its position in the array is returned. If the target value is less than the element, the search continues in the lower half of the array. If the target value is greater than the element, the search continues in the upper half of the array. By doing this, the algorithm eliminates the half in which the target value cannot lie in each iteration.
 
 ## Procedure
@@ -35,7 +36,7 @@ uses binary search to find the index of <Latex formula='T' /> in <Latex formula=
 
 This iterative procedure keeps track of the search boundaries with the two variables <Latex formula='L' /> and <Latex formula='R' />. The pseudocode is available below:
 
-```pseudocode
+```text
 function binary_search(A, T) is
 	n = size(A)
 	L := 0
@@ -86,4 +87,4 @@ print(f"The value of {number} is in index [{result}].")
 
 > Note: In python, it is necessary to convert the result of the `np.floor` function because python implicitly converts the integers into float.
 
-I will update this page with other implementations (Like in Rust, C++, JavaScript and etc.)
+I will update this page with other implementations (Like in Rust, C++, JavaScript and etc.) soon.

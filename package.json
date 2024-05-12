@@ -16,8 +16,10 @@
     "@astrojs/rss": "^4.0.5",
     "astro": "^4.8.2",
     "bulma": "^1.0.0",
+    "copy-to-clipboard": "^3.3.3",
     "katex": "^0.16.10",
     "preact": "^10.21.0",
+    "react-code-blocks": "^0.1.6",
     "sass": "^1.77.1"
   }
 }

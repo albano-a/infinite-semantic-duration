@@ -5,14 +5,22 @@ const Navigation = () => {
 
   const toggleIsActive = () => {
     setIsActive(!isActive);
-    console.log('Burger menu clicked!');
+    console.log("Burger menu clicked!");
+  };
+
+  const brandStyle = {
+    color: "#ebecf0",
+    padding: "5px",
+    fontFamily: "Neco",
+    fontSize: "20px",
+    fontWeight: "bold",
   };
 
   return (
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          {" "}
+          <h1 style={brandStyle}> Infinite Semantic Duration </h1>{" "}
         </a>
 
         <a

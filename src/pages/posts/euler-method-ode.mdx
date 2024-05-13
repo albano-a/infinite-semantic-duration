@@ -1,0 +1,164 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: Euler Method - ODEs
+author: Andre Albano
+slug: euler-method-odes
+description: "Euler Method applied for numerically solving Ordinary Differential Equations."
+pubDate: 2024-05-13T14:00:00
+draft: true
+image:
+  url: "/user-profile.png"
+  alt: "write logo"
+tags:
+  [
+    "differential equations",
+    "algorithm",
+    "numerical solutions",
+    "scientific programming",
+    "python",
+  ]
+---
+
+import CopyButton from "../../components/CodeBlock";
+import Latex from "../../components/Latex.astro";
+import LatexCenter from "../../components/LatexCenter.astro";
+
+To approximate Ordinary Differential Equations (ODEs) we normally use numerical methods and initial value problems.
+A typical IVP is given by:
+
+<LatexCenter formula="\frac{\delta y}{\delta t} = f(y,\ t);\ a \le t \le b;\ y(a) = \alpha" />
+
+Where <Latex formula="y(t)"/> is what I want to approximate, <Latex formula="f(y,\ t)"/> is a known
+function, <Latex formula="a"/> and <Latex formula="b"/> are the limits of the interval, and <Latex formula="\alpha"/>
+is the initial condition.
+
+There are several methods to solve ODEs numerically:
+
+1. Euler
+2. Taylor
+3. Runge-Kutta
+4. Runge-Kutta-Fehlberg
+5. Adams-Bashforth
+6. Adams-Moulton
+
+And so on. The method covered in this post is the Euler Method.
+
+The Euler method is a simple numerical method. It is based on the idea of approximating the solution
+of an ODE by a sequence of small steps. The method is named after the Swiss mathematician Leonhard
+Euler, who first introduced it in the 18th century.
+
+It is based on the Taylor series expansion of the function <Latex formula="y(t)"/> around the point <Latex formula="t_i"/>:
+
+<LatexCenter formula="y(t_{i+1}) = y(t_i) + (t_{i+1}-t_{i}) \cdot y'(t_i) + \frac{(t_{i+1}-t_{i})^{2}}{2}y''(\xi_{i})" />
+
+For any <Latex formula="\xi_{i}"/> in the interval <Latex formula="[t_i, t_{i+1}]"/>. We can say that <Latex formula="(t_{i+1}-t_{i})"/> is equal
+to the step size <Latex formula="h"/> that is the element size. So, the Euler Method is:
+
+<LatexCenter formula="y_{i+1} = y_i + h \cdot f(y_i,\ t_i)" />
+
+Where <Latex formula="y_i"/> is the approximation of <Latex formula="y(t_i)"/> and <Latex formula="y_{i+1}"/> is the approximation of <Latex formula="y(t_{i+1})"/>.
+And both can be written as <Latex formula="\omega_i"/> and <Latex formula="\omega_{i+1}"/> respectively. So the formula can be written as:
+
+<LatexCenter
+  formula="
+\omega_{0} = y(t_{0}) = \alpha \\ 
+\omega_{i + 1} = \omega_{i} + h \cdot f(\omega_{i}, t_{i})
+"
+/>
+
+The Euler method is a first-order method, which means that the error is proportional to the step size <Latex formula="h"/>.
+
+Example: Let's solve the following ODE:
+
+<LatexCenter formula="\frac{\delta y}{\delta t} = y - t^{2} + 1;\ 0 \le t \le 2;\ y(0) = 0.5 ;\ h = 0.2" />
+
+First we have to analyze the value of the step size <Latex formula="h"/>. The interval is <Latex formula="[0, 2]"/>
+and the step size is <Latex formula="0.2"/>, so we have 10 steps. The values of <Latex formula="t"/> are:
+
+<LatexCenter formula="t_0 = 0.0, t_1 = 0.2, t_2 = 0.4, t_3 = 0.6, t_4 = 0.8, " />
+<LatexCenter formula="t_5 = 1.0, t_6 = 1.2, t_7 = 1.4, t_8 = 1.6, t_9 = 1.8" />
+
+So that means that the number of iterations is equal to 10. What we have to do is, take the initial
+function <Latex formula="\frac{\delta y}{\delta t} = y' = y - t^{2} + 1 = f(\omega_i,\ t_i)" /> and apply the Euler method
+to approximate the values of <Latex formula="y"/> in each step.
+The initial condition is <Latex formula="y(0) = 0.5" />.
+
+<LatexCenter formula="\omega_{0} = 0.5" />
+
+<LatexCenter formula="\omega_{i + 1} = \omega_{i} + h \cdot (\omega_{i} - t_{i}^{2} + 1)" />
+
+So <Latex formula="\omega_{0 + 1} = \omega_{1}"/> for the first iteration is going to be:
+
+<LatexCenter formula="\omega_{1} = 0.5 + 0.2 \cdot (0.5 - 0^{2} + 1) = 0.8" />
+
+And the rest of iterations are:
+
+<LatexCenter formula="\omega_{2} = 0.8 + 0.2 \cdot (0.8 - 0.2^{2} + 1) = 1.152" />
+
+<LatexCenter formula="\omega_{3} = 1.152 + 0.2 \cdot (1.152 - 0.4^{2} + 1 = 1.5504" />
+
+<LatexCenter formula="\omega_{4} = 1.5504 + 0.2 \cdot (1.5504 - 0.6^{2} + 1) = 1.9884" />
+
+<LatexCenter formula="\omega_{5} = 1.9884 + 0.2 \cdot (1.9884 - 0.8^{2} + 1) = 2.4580" />
+
+<LatexCenter formula="\omega_{6} = 2.4580 + 0.2 \cdot (2.4580 - 1.0^{2} + 1) = 2.9498" />
+
+<LatexCenter formula="\omega_{7} = 2.9498 + 0.2 \cdot (2.9498 - 1.2^{2} + 1) = 3.4517" />
+
+<LatexCenter formula="\omega_{8} = 3.4517 + 0.2 \cdot (3.4517 - 1.4^{2} + 1) = 3.9501" />
+
+<LatexCenter formula="\omega_{9} = 3.9501 + 0.2 \cdot (3.9501 - 1.6^{2} + 1) = 4.4281" />
+
+<LatexCenter formula="\omega_{10} = 4.4281 + 0.2 \cdot (4.4281 - 1.8^{2} + 1) = 4.8657" />
+
+So the approximate value of <Latex formula="y(2)"/> is <Latex formula="\omega_{10} = 4.8657" />. For comparison, the exact solution of the ODE is:
+
+<LatexCenter formula="y(t) = t^{2} + 2t + 1 - 0.5e^{t}" />
+
+So the exact value of <Latex formula="y(2)"/> is:
+
+<LatexCenter formula="y(2) = 2^{2} + 2 \cdot 2 + 1 - 0.5e^{2} = 5.3054" />
+
+So the error of the Euler method is:
+
+<LatexCenter formula="\text{Error} = |4.8657 - 5.3054| = 0.4397" />
+
+The error is 0.4397, which is a good approximation for the Euler method.
+
+Below we can see the plot of the exact solution and the Euler method approximation.
+
+<div class="mb-2" style="display: flex; justify-content: center;">
+  ![euler demonstration](/postImages/eulerMethod.png)
+</div>
+
+And below, we can see the Python code that implements the Euler method for the ODE:
+
+<CopyButton client:load text={`
+def euler(edo, a, b, h, y0):
+\tt = np.linspace(a, b, int(np.ceil(b-a)/h)+1)
+\tn = np.zeros(len(t))
+\tn[0] = y0
+
+\tfor i in range(0, len(t)-1):
+\t\tk = edo(t[i], n[i])
+\t\tn[i+1] = n[i] + h \* k
+
+\treturn t, n
+`} />
+
+```python
+def euler(edo, a, b, h, y0):
+    t = np.linspace(a, b, int(np.ceil(b-a)/h)+1)
+    n = np.zeros(len(t))
+    n[0] = y0
+
+    for i in range(0, len(t)-1):
+        k = edo(t[i], n[i])
+        n[i+1] = n[i] + h * k
+
+    return t, n
+```
+
+So, to sum up the Euler method is considered a simple method to approximate ODEs. The method is easy
+to implement and understand, but it is not very accurate. For more accurate methods, we can use the
+Runge-Kutta method or the Adams-Bashforth method.

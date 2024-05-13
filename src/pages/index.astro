@@ -25,23 +25,39 @@ const allPosts = await Astro.glob("../pages/posts/*.{md,mdx}");
     ]}
   />
   <hr />
-  <p class="is-size-4 has-text-justified">
-    Welcome to Infinite Semantic Duration. Here, you will find the small corner
-    of the internet owned by me (or Netlify, but whatever). Here I will post
-    random stuff, about coding, geophysics, and etc. Click on Blog to see the
-    posts, or click down bellow
-  </p>
-  <ul>
-    {
-      [...allPosts]
-        .reverse()
-        .map((post) => (
-          <BlogPost
-            url={post.url}
-            title={post.frontmatter.title}
-            date={post.frontmatter.pubDate}
-          />
-        ))
-    }
-  </ul>
+  <div class="columns is-size-4">
+    <div class="column">
+      <p class="has-text-justified">
+        Welcome to Infinite Semantic Duration. Here, you will find the small
+        corner of the internet owned by me (or Netlify, but whatever). Here I
+        will post random stuff, about coding, geophysics, and etc. Click on <a href="/blog/">Blog</a>
+        to see the posts, or click in one of the posts bellow.
+      </p>
+      {
+        [...allPosts]
+          .reverse()
+          .reduce((rows, post, index) => {
+            if (index % 3 === 0) {
+              rows.push([]);
+            }
+            rows[rows.length - 1].push(
+              <div class="column">
+                <BlogPost
+                  url={post.url}
+                  title={post.frontmatter.title}
+                  date={post.frontmatter.pubDate}
+                  description={post.frontmatter.description}
+                />
+              </div>
+            );
+            return rows;
+          }, [])
+          .map((row, index) => (
+            <div class="columns">
+              {row}
+            </div>
+          ))
+      }
+    </div>
+  </div>
 </BaseLayout>

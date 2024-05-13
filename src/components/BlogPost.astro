@@ -1,5 +1,5 @@
 ---
-const { title, url, date } = Astro.props;
+const { title, url, date, description } = Astro.props;
 const formattedDate = new Date(date).toLocaleString("en-US", {
   year: "numeric",
   month: "long",
@@ -10,4 +10,16 @@ const formattedDate = new Date(date).toLocaleString("en-US", {
 });
 ---
 
-<li ><a href={url}>{title} - {formattedDate}</a></li>
+<!-- <li ><a href={url}>{title} - {formattedDate}</a></li> -->
+<div class="card is-shadowless has-background-text-dark">
+  <div class="card-header">
+    <p class="card-header-title is-centered">{title}</p>
+  </div>
+  <div class="card-content">
+    <p class="has-text-text-light has-text-centered">{description}</p>
+    <p class="is-size-5 has-text-link-light has-text-centered">Posted on {formattedDate}</p>
+  </div>
+  <div class="card-footer">
+    <a href={url} class="card-footer-item">Read More</a>
+  </div>
+</div>

@@ -4,28 +4,40 @@ import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 const allPosts = await Astro.glob("../pages/posts/*.{md,mdx}");
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 const pageTitle = "Blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <div class="columns is-size-4">
-    <div class="column"></div>
-    <div class="column is-three-fifths">
+    <div class="column">
       <p>Here you can find all my posts, in most recent to most old</p>
-      <ul>
-        {
-          [...allPosts]
-            .reverse()
-            .map((post) => (
-              <BlogPost
-                url={post.url}
-                title={post.frontmatter.title}
-                date={post.frontmatter.pubDate}
-              />
-            ))
-        }
-      </ul>
+
+      {
+        [...allPosts]
+          .reverse()
+          .reduce((rows, post, index) => {
+            if (index % 3 === 0) {
+              rows.push([]);
+            }
+            rows[rows.length - 1].push(
+              <div class="column">
+                <BlogPost
+                  url={post.url}
+                  title={post.frontmatter.title}
+                  date={post.frontmatter.pubDate}
+                  description={post.frontmatter.description}
+                />
+              </div>
+            );
+            return rows;
+          }, [])
+          .map((row, index) => (
+            <div class="columns">
+              {row}
+            </div>
+          ))
+      }
     </div>
-    <div class="column"></div>
   </div>
 </BaseLayout>

@@ -4,10 +4,12 @@ let { links = [] } = Astro.props;
 
 <nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>
-    {links.map((link, index) => (
-      <li>
-        <a href={link.url}>{link.text}</a>
-      </li>
-    ))}
+    {
+      links.map((link, index) => (
+        <li>
+          <a href={link.url}>{link.text}</a>
+        </li>
+      ))
+    }
   </ul>
 </nav>

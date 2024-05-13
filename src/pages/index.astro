@@ -2,8 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Greeting from "../components/Greeting";
 import BlogPost from "../components/BlogPost.astro";
+
 const pageTitle = "Infinite Semantic Duration";
 const allPosts = await Astro.glob("../pages/posts/*.{md,mdx}");
+allPosts.sort((a, b) => new Date(a.frontmatter.pubDate).getTime() - new Date(b.frontmatter.pubDate).getTime());
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -30,7 +32,9 @@ const allPosts = await Astro.glob("../pages/posts/*.{md,mdx}");
       <p class="has-text-justified">
         Welcome to Infinite Semantic Duration. Here, you will find the small
         corner of the internet owned by me (or Netlify, but whatever). Here I
-        will post random stuff, about coding, geophysics, and etc. Click on <a href="/blog/">Blog</a>
+        will post random stuff, about coding, geophysics, and etc. Click on <a
+          href="/blog/">Blog</a
+        >
         to see the posts, or click in one of the posts bellow.
       </p>
       {
@@ -52,12 +56,9 @@ const allPosts = await Astro.glob("../pages/posts/*.{md,mdx}");
             );
             return rows;
           }, [])
-          .map((row, index) => (
-            <div class="columns">
-              {row}
-            </div>
-          ))
+          .map((row, index) => <div class="columns">{row}</div>)
       }
     </div>
   </div>
+  
 </BaseLayout>

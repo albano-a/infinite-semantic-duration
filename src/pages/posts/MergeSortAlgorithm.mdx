@@ -1,0 +1,180 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: Merge Sort Algorithm
+author: Andre Albano
+description: "This post briefly explains what merge sort is, how to do it, and an implementation in Python of it."
+pubDate: 2024-05-12T23:00:00
+image:
+  url: "/user-profile.png"
+  alt: "write logo"
+tags: ["programming", "algorithm", "sorting", "merge sort", "python"]
+---
+
+import CopyButton from "../../components/CodeBlock";
+
+Merge sort is a highly effective way to sort data. In many cases,
+it maintains the order of equal elements from the input to the output, making it what's called a stable sort.
+Merge sort is a [divide-and-conquer algorithm](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm)
+that was invented by John von Neumann, at the end of World War II.
+
+## Algorithm
+
+A merge sort algorithm works like this:
+
+1. Divide the unsorted list in smaller sublists, each containing one element (a list of one element is considered sorted);
+2. Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining.
+
+There are two implementations of this algorithm, one is top-down, i.e recursive, and the other is bottom-up, i.e iterative.
+But I will only show you the recursive one, as it is the most common and easier to understand.
+
+## Pseudocode
+
+This algorithm recursively divides the input list into smaller sublists until the sublists are trivially sorted, and then
+merges the sublists while sorting them. The pseudocode is available below:
+
+```text
+function merge_sort(list m) is
+    // Base case. A list of zero or one
+    // elements is sorted, by definition.
+    if length of m ≤ 1 then
+        return m
+
+    // Recursive case. First, divide the
+    // list into equal-sized sublists
+    // consisting of the first half
+    // and second half of the list.
+    // This assumes lists start at index 0.
+    var left := empty list
+    var right := empty list
+    for each x with index i in m do
+        if i < (length of m)/2 then
+            add x to left
+        else
+            add x to right
+
+    // Recursively sort both sublists.
+    left := merge_sort(left)
+    right := merge_sort(right)
+
+    // Then merge the now-sorted sublists.
+    return merge(left, right)
+```
+
+```text
+function merge(left, right) is
+    var result := empty list
+
+    while left is not empty and right is not empty do
+        if first(left) ≤ first(right) then
+            append first(left) to result
+            left := rest(left)
+        else
+            append first(right) to result
+            right := rest(right)
+
+    // Either left or right may have elements left; consume them.
+    // (Only one of the following loops will actually be entered.)
+    while left is not empty do
+        append first(left) to result
+        left := rest(left)
+    while right is not empty do
+        append first(right) to result
+        right := rest(right)
+    return result
+```
+
+## Implementation
+
+### Python
+
+<CopyButton client:load text={`
+def merge(left, right):
+\tresult = []
+
+\twhile len(left) != 0 and len(right) != 0:
+\t\tif left[0] <= right[0]:
+\t\t\tresult.append(left[0])
+\t\t\tleft = left[1:]
+\t\telse:
+\t\t\tresult.append(right[0])
+\t\t\tright = right[1:]
+
+\twhile len(left) != 0:
+\t\tresult.append(left[0])
+\t\tleft = left[1:]
+
+\twhile len(right) != 0:
+\t\tresult.append(right[0])
+\t\tright = right[1:]
+
+\treturn result
+
+def merge_sort(array):
+\tif len(array) <= 1:
+\t\treturn array
+
+\tleft = []
+\tright = []
+
+\tfor i, x in enumerate(array):
+\t\tif i < len(array) / 2:
+\t\t\tleft.append(x)
+\t\telse:
+\t\t\tright.append(x)
+
+\tleft = merge_sort(left)
+\tright = merge_sort(right)
+
+\treturn merge(left, right)
+
+j = [38, 27, 43, 3, 9, 82, 10]
+
+print(merge_sort(j))
+`} />
+
+```python
+def merge(left, right):
+    result = []
+
+    while len(left) != 0 and len(right) != 0:
+        if left[0] <= right[0]:
+            result.append(left[0])
+            left = left[1:]
+        else:
+            result.append(right[0])
+            right = right[1:]
+
+    while len(left) != 0:
+        result.append(left[0])
+        left = left[1:]
+
+    while len(right) != 0:
+        result.append(right[0])
+        right = right[1:]
+
+    return result
+
+
+def merge_sort(array):
+    if len(array) <= 1:
+        return array
+
+    left = []
+    right = []
+
+    for i, x in enumerate(array):
+        if i < len(array) / 2:
+            left.append(x)
+        else:
+            right.append(x)
+
+    left = merge_sort(left)
+    right = merge_sort(right)
+
+    return merge(left, right)
+
+
+j = [38, 27, 43, 3, 9, 82, 10]
+
+print(merge_sort(j))
+```

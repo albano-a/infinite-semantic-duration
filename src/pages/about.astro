@@ -15,55 +15,103 @@ const skills = [
   "Python",
   "HTML",
   "CSS",
+  "C/C++",
   "JavaScript",
   "Rust",
   "Astro",
-  "C/C++",
 ];
-
-const happy = true;
-const finished = true;
-const goal = 3;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>... and my new Astro site!</h2>
+  <div class="container has-text-text-light has-text-justified">
+    <div class="content is-size-4">
+      <p>
+        My name is Andre, I'm a Brazilian geophysicist that loves programming
+        and solving problems. My favorites band is <a
+          href="https://www.metallica.com/">Metallica</a
+        >, and my favorite singers are <a
+          href="https://twitter.com/iameden?lang=en">Eden</a
+        > and
+        <a href="https://twitter.com/sushitrash?lang=en">Joji</a> (At the bottom
+        of this page, you'll discover my latest recommended albums. Be sure to check
+        back frequently for an updated list!). In my free time I like to code, watch
+        videos, play games, and write little coding projects. Go to my GitHub to
+        see my most recents projects: <a
+          href="https://github.com/albano-a?tab=repositories">GitHub</a
+        >. I would be happy if you wanted to contribute in any of those
+        projects.
+      </p>
+      <p>
+        This site is my personal blog, and also kind of a portfolio. I will
+        probably sporadically post here, or just post everyday or something for
+        the next month and then just forget about it.
+      </p>
 
-  <p>
-    I am working through Astro's introductory tutorial. This is the second page
-    on my website, and it's the first one I built myself!
-  </p>
-  <p>
-    This site will update as I complete more of the tutorial, so keep checking
-    back and see how my journey is going!
-  </p>
-  <p>Here are a few facts about me:</p>
-  <ul>
-    <li>My name is {identity.firstName}</li>
-    <li>
-      I live in {identity.country} and I work as a {identity.occupation}.
-    </li>
-    {
-      identity.hobbies.length >= 2 && (
+      <p>Here are a few facts about me:</p>
+      <ul>
+        <li>My name is {identity.firstName}</li>
         <li>
-          Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+          I live in {identity.country} and I work as a {identity.occupation}.
         </li>
-      )
-    }
-  </ul>
-  <p>My skills are:</p>
-  <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
-  </ul>
-  {happy && <p>I am happy to be learning Astro!</p>}
-
-  {finished && <p>I finished this tutorial!</p>}
-
-  {
-    goal === 3 ? (
-      <p>My goal is to finish in 3 days.</p>
-    ) : (
-      <p>My goal is not 3 days.</p>
-    )
-  }
+        {
+          identity.hobbies.length >= 2 && (
+            <li>
+              Two of my hobbies are: {identity.hobbies[0]} and{" "}
+              {identity.hobbies[1]}
+            </li>
+          )
+        }
+      </ul>
+      <p>I have knowledges on these languages/frameworks:</p>
+      <div class="columns has-text-weight-bold">
+        {
+          skills.map((skill) => (
+            <div class="is-size-3 column has-text-centered skill">{skill}</div>
+          ))
+        }
+      </div>
+      <p>
+        When I write about algorithms, coding problems and etc, I will use
+        different languages. Probably the one I'll use the most in Python
+        because it's the one I have more knowledge in.
+      </p>
+      <hr />
+      <h2 class="">Here's a curated selection of must-listen albums:</h2>
+      <div class="columns has-text-centered">
+        <div class="column">
+          <iframe
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/album/6Eycw3dwcDMEFSqkUvLQ7g?utm_source=generator"
+            width="100%"
+            height="352"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+        </div>
+        <div class="column">
+          <iframe
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/album/5mIImcsuqpiSXg8XvFr81I?utm_source=generator"
+            width="100%"
+            height="352"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+        </div>
+        <div class="column">
+          <iframe
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/album/6vR1cBQ9Ss7jXzwr7aUmvd?utm_source=generator"
+            width="100%"
+            height="352"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 </BaseLayout>

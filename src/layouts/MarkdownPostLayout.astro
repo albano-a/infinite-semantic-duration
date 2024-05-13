@@ -28,7 +28,13 @@ const { frontmatter } = Astro.props;
     </div>
   </div>
   <hr />
-  <div class="container is-size-5 has-text-justified mt-5">
-    <slot />
+  <div class="columns">
+    <div class="column"></div>
+    <div class="column is-three-fifths">
+      <div class="container is-size-5 has-text-justified mt-5">
+        <slot />
+      </div>
+    </div>
+    <div class="column"></div>
   </div>
 </BaseLayout>

@@ -23,12 +23,34 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout pageTitle={tag}>
-  <p>Posts tagged with {tag}</p>
-  <ul>
-    {
-      posts.map((post) => (
-        <BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate}/>
-      ))
-    }
-  </ul>
+  <div class="columns is-size-4">
+    <div class="column">
+      <p>Posts tagged with {tag}</p>
+      {
+        [...posts]
+          .reverse()
+          .reduce((rows, post, index) => {
+            if (index % 3 === 0) {
+              rows.push([]);
+            }
+            rows[rows.length - 1].push(
+              <div class="column">
+                <BlogPost
+                  url={post.url}
+                  title={post.frontmatter.title}
+                  date={post.frontmatter.pubDate}
+                  description={post.frontmatter.description}
+                />
+              </div>
+            );
+            return rows;
+          }, [])
+          .map((row, index) => (
+            <div class="columns">
+              {row}
+            </div>
+          ))
+      }
+    </div>
+  </div>
 </BaseLayout>

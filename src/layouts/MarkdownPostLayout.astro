@@ -1,14 +1,17 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
-const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-  hour: "numeric",
-  minute: "numeric",
-  hour12: true,
-});
+const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
+  "en-US",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  }
+);
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -38,8 +41,55 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString("en-US", 
     <div class="column is-three-fifths">
       <div class="container is-size-5 has-text-justified mt-5">
         <slot />
+        <hr />
+        <article class="media">
+          <figure class="media-left">
+            <img
+              class=""
+              src={frontmatter.image.url}
+              width="128"
+              alt={frontmatter.image.alt}
+            />
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>André Albano</strong>
+                <small>@onablaerdna</small>
+                <br />
+                I'm a Geophysicist and Coder. I work with seismic inversion algorithms,
+                software development, well log analysis and so on.
+              </p>
+            </div>
+          </div>
+        </article>
+        <div id="disqus_thread"></div>
       </div>
     </div>
     <div class="column"></div>
   </div>
 </BaseLayout>
+
+<script>
+  /**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+  var disqus_config = function () {
+    this.page.url = window.location.href; // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = window.location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+
+  (function () {
+    // DON'T EDIT BELOW THIS LINE
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://infinite-semantic-duration.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the <a
+    href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a
+  ></noscript
+>

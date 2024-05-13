@@ -27,19 +27,21 @@ const allPosts = await Astro.glob("../pages/posts/*.{md,mdx}");
   <hr />
   <p class="is-size-4 has-text-justified">
     Welcome to Infinite Semantic Duration. Here, you will find the small corner
-    of the internet owned by me (or Netlify, but
-    whatever). Here I will post random stuff, about coding, geophysics, and etc.
-    Click on Blog to see the posts, or click down bellow
+    of the internet owned by me (or Netlify, but whatever). Here I will post
+    random stuff, about coding, geophysics, and etc. Click on Blog to see the
+    posts, or click down bellow
   </p>
   <ul>
     {
-      [...allPosts].reverse().map((post) => (
-        <BlogPost
-          url={post.url}
-          title={post.frontmatter.title}
-          date={post.frontmatter.pubDate}
-        />
-      ))
+      [...allPosts]
+        .reverse()
+        .map((post) => (
+          <BlogPost
+            url={post.url}
+            title={post.frontmatter.title}
+            date={post.frontmatter.pubDate}
+          />
+        ))
     }
   </ul>
 </BaseLayout>

@@ -5,11 +5,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 const allPosts = await Astro.glob("../pages/posts/*.{md,mdx}");
 const pageTitle = "Blog";
+const pageURL = "https://albano-dev.netlify.app/blog/";
+const description = "Geophysics and Programming Blog";
 allPosts.sort((a, b) => new Date(a.frontmatter.pubDate).getTime() - new Date(b.frontmatter.pubDate).getTime());
 
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageURL={pageURL} description={description}>
   <div class="columns is-size-4">
     <div class="column">
       <p>Here you can find all my posts, in most recent to most old</p>

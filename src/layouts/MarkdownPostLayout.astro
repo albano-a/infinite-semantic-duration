@@ -14,7 +14,7 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
 );
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout pageTitle={frontmatter.title} pageURL={frontmatter.pageURL} description={frontmatter.description}>
   <div class="container has-text-centered">
     <p class="subtitle">
       Published on: <b>{formattedDate}</b>

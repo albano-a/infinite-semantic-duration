@@ -3,6 +3,8 @@ import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About Me";
+const pageURL = "https://albano-dev.netlify.app/about/";
+const description = "About Infinite Semantic Duration";
 
 const identity = {
   firstName: "Andre",
@@ -22,7 +24,7 @@ const skills = [
 ];
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} pageURL={pageURL} description={description}>
   <div class="container has-text-text-light has-text-justified">
     <div class="content is-size-4">
       <p>

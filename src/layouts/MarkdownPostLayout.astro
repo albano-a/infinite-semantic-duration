@@ -1,26 +1,31 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
+const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  hour12: true,
+});
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
   <div class="container has-text-centered">
     <p class="subtitle">
-      Published on: <b>{frontmatter.pubDate}</b>
+      Published on: <b>{formattedDate}</b>
     </p>
     <p class="is-size-4 has-text-centered">
       <em>{frontmatter.description}</em>
     </p>
     <p class="subtitle">Written by: <b>{frontmatter.author}</b></p>
-    <p class="is-size-6 is-italic">
-      Updated on: <b>{frontmatter.lastUpdate}</b>
-    </p>
 
     <div class="tags is-flex is-justify-content-center">
       Tags:
       {
         frontmatter.tags.map((tag) => (
-          <span class="tag is-medium is-hoverable is-rounded">
+          <span class="tag is-medium has-background-success-dark is-rounded">
             <a href={`/tags/${tag}`}>{tag}</a>
           </span>
         ))

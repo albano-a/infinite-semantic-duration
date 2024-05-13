@@ -1,5 +1,13 @@
 ---
 const { title, url, date } = Astro.props;
+const formattedDate = new Date(date).toLocaleString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  hour12: false,
+});
 ---
 
-<li><a href={url}>{title} - {date}</a></li>
+<li ><a href={url}>{title} - {formattedDate}</a></li>

@@ -8,18 +8,24 @@ const pageTitle = "Blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
-  <ul>
-    {
-      [...allPosts]
-        .reverse()
-        .map((post) => (
-          <BlogPost
-            url={post.url}
-            title={post.frontmatter.title}
-            date={post.frontmatter.pubDate}
-          />
-        ))
-    }
-  </ul>
+  <div class="columns is-size-4">
+    <div class="column"></div>
+    <div class="column is-three-fifths">
+      <p>Here you can find all my posts, in most recent to most old</p>
+      <ul>
+        {
+          [...allPosts]
+            .reverse()
+            .map((post) => (
+              <BlogPost
+                url={post.url}
+                title={post.frontmatter.title}
+                date={post.frontmatter.pubDate}
+              />
+            ))
+        }
+      </ul>
+    </div>
+    <div class="column"></div>
+  </div>
 </BaseLayout>

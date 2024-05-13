@@ -1,5 +1,7 @@
 # Infinite Semantic Duration
 
-This is the repository for my blog, hosted on Netlify - [Infinite Semantic Duration](https://infinite-semantic-duration.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1c30a9f9-2b56-499a-87f8-4d43210f1b65/deploy-status)](https://app.netlify.com/sites/albano-dev/deploys)
 
-This blog was built using Astro and a little Preact. This is a test ground.
+This is the repository for my personal blog, hosted on Netlify - [Infinite Semantic Duration](https://albano-dev.netlify.app/)
+
+This blog was built using Astro and Preact.

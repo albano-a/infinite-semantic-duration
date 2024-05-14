@@ -3,7 +3,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
 
 export async function getStaticPaths() {
-  const allPosts = await Astro.glob("../posts/*.{md,mdx}");
+  const allPosts = (await Astro.glob("../posts/*.{md,mdx}")).filter(
+    (post) => !post.frontmatter.draft
+  );
+  allPosts.sort(
+    (a, b) =>
+      new Date(a.frontmatter.pubDate).getTime() -
+      new Date(b.frontmatter.pubDate).getTime()
+  );
+
   const uniqueTags = [
     ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
   ];
@@ -45,11 +53,7 @@ const { posts } = Astro.props;
             );
             return rows;
           }, [])
-          .map((row, index) => (
-            <div class="columns">
-              {row}
-            </div>
-          ))
+          .map((row, index) => <div class="columns">{row}</div>)
       }
     </div>
   </div>

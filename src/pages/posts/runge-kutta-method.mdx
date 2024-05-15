@@ -27,4 +27,30 @@ import CopyButton from "../../components/CodeBlock";
 import Latex from "../../components/Latex.astro";
 import LatexCenter from "../../components/LatexCenter.astro";
 
-One other method for solving Ordinary Differential Equations (ODEs) is the Runge-Kutta method. This method is a family of iterative methods that can be used to solve initial value problems. The most common Runge-Kutta methods are the 2nd and 4th order.
+DRAFT
+
+One other method for solving Ordinary Differential Equations (ODEs) is the Runge-Kutta method. This method is a 
+family of iterative methods that can be used to solve initial-value problems. The most common Runge-Kutta methods
+are the 2nd and 4th order.
+
+The way to solve these methods are very similar to the [Euler Method](/posts/euler-method-ode), but with more precision.
+The 2nd order Runge-Kutta method is also known as the midpoint method, and the 4th order Runge-Kutta method is the most 
+commonly used.
+
+The 2nd order Runge-Kutta method is given by:
+
+<LatexCenter formula="
+w_{0} = \alpha \\
+w_{i+1} = w_{i} + h f(t_{i} + \frac{h}{2}, w_{i} + \frac{h}{2} f(t_{i}, w_{i}))
+" />
+
+And the 4th order Runge-Kutta method is given by:
+
+<LatexCenter formula="
+w_{0} = \alpha \\
+k_{1} = h f(t_{i}, w_{i}) \\
+k_{2} = h f(t_{i} + \frac{h}{2}, w_{i} + \frac{k_{1}}{2}) \\
+k_{3} = h f(t_{i} + \frac{h}{2}, w_{i} + \frac{k_{2}}{2}) \\
+k_{4} = h f(t_{i+1} + h, w_{i} + k_{3}) \\
+w_{i+1} = w_{i} + \frac{1}{6}(k_{1} + 2k_{2} + 2k_{3} + k_{4})
+" />

@@ -22,48 +22,50 @@ const Navigation = () => {
       role="navigation"
       aria-label="main navigation"
     >
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <h1 style={brandStyle}> Infinite Semantic Duration </h1>{" "}
-        </a>
-
-        <a
-          role="button"
-          class={`navbar-burger ${isActive ? "is-active" : ""}`}
-          aria-label="menu"
-          onClick={toggleIsActive}
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div
-        id="nav-menu-items"
-        class={`navbar-menu ${isActive ? "is-active" : ""}`}
-      >
-        <div class="navbar-start">
+      <div class="container">
+        <div class="navbar-brand">
           <a class="navbar-item" href="/">
-            {" "}
-            Home{" "}
+            <h1 style={brandStyle}> Infinite Semantic Duration </h1>{" "}
           </a>
 
-          <a class="navbar-item" href="/about/">
-            {" "}
-            About{" "}
+          <a
+            role="button"
+            class={`navbar-burger ${isActive ? "is-active" : ""}`}
+            aria-label="menu"
+            onClick={toggleIsActive}
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
           </a>
+        </div>
 
-          <a class="navbar-item" href="/blog/">
-            {" "}
-            Blog{" "}
-          </a>
+        <div
+          id="nav-menu-items"
+          class={`navbar-menu ${isActive ? "is-active" : ""}`}
+        >
+          <div class="navbar-start">
+            <a class="navbar-item" href="/">
+              {" "}
+              Home{" "}
+            </a>
 
-          <a class="navbar-item" href="/tags/">
-            {" "}
-            Tags{" "}
-          </a>
+            <a class="navbar-item" href="/about/">
+              {" "}
+              About{" "}
+            </a>
+
+            <a class="navbar-item" href="/blog/">
+              {" "}
+              Blog{" "}
+            </a>
+
+            <a class="navbar-item" href="/tags/">
+              {" "}
+              Tags{" "}
+            </a>
+          </div>
         </div>
       </div>
     </nav>

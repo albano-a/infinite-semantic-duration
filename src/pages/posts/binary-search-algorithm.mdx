@@ -31,25 +31,25 @@ with the target value. If the target value matches the element, its position in 
 
 ## Procedure
 
-Given an array <Latex formula='A' /> of <Latex formula='n' /> elements with values <Latex formula='A_{0}, A_{1}, A_{2},...,A_{n-1}' />
-sorted such that <Latex formula='A_{0} \le A_{1} \le A_{2} \le ... \le A_{n-1}' />, and target value <Latex formula='T' />, the following subroutine
-uses binary search to find the index of <Latex formula='T' /> in <Latex formula='A' />.:
+Given an array <Latex f='A' /> of <Latex f='n' /> elements with values <Latex f='A_{0}, A_{1}, A_{2},...,A_{n-1}' />
+sorted such that <Latex f='A_{0} \le A_{1} \le A_{2} \le ... \le A_{n-1}' />, and target value <Latex f='T' />, the following subroutine
+uses binary search to find the index of <Latex f='T' /> in <Latex f='A' />.:
 
-1. Set <Latex formula='L' /> to <Latex formula='0' /> and <Latex formula='R' /> to <Latex formula='n - 1' />
-   (<Latex formula='n' /> being the size of the array).
+1. Set <Latex f='L' /> to <Latex f='0' /> and <Latex f='R' /> to <Latex f='n - 1' />
+   (<Latex f='n' /> being the size of the array).
 
-2. If <Latex formula='L \gt R' />, the search terminates as unsuccessful.
+2. If <Latex f='L \gt R' />, the search terminates as unsuccessful.
 
-3. Set <Latex formula='m' /> (the position of the middle element) to the [floor](https://en.wikipedia.org/wiki/Floor_and_ceiling_functions)
-   of <Latex formula='\frac{L + R}{2}' />, which is the greates integer less than or equal to <Latex formula='\frac{L + R}{2}' />.
+3. Set <Latex f='m' /> (the position of the middle element) to the [floor](https://en.wikipedia.org/wiki/Floor_and_ceiling_functions)
+   of <Latex f='\frac{L + R}{2}' />, which is the greates integer less than or equal to <Latex f='\frac{L + R}{2}' />.
 
-4. If <Latex formula='A_{m} \lt T' />, set <Latex formula='L' /> to <Latex formula='m + 1' /> and go to step 2.
+4. If <Latex f='A_{m} \lt T' />, set <Latex f='L' /> to <Latex f='m + 1' /> and go to step 2.
 
-5. If <Latex formula='A_{m} \gt T' />, set <Latex formula='R' /> to <Latex formula='m - 1' /> and go to step 2.
+5. If <Latex f='A_{m} \gt T' />, set <Latex f='R' /> to <Latex f='m - 1' /> and go to step 2.
 
-6. Now <Latex formula='A_{m} = T' />, the search is done; return <Latex formula='m' />
+6. Now <Latex f='A_{m} = T' />, the search is done; return <Latex f='m' />
 
-This iterative procedure keeps track of the search boundaries with the two variables <Latex formula='L' /> and <Latex formula='R' />. The pseudocode is available below:
+This iterative procedure keeps track of the search boundaries with the two variables <Latex f='L' /> and <Latex f='R' />. The pseudocode is available below:
 
 ```text
 function binary_search(A, T) is

@@ -1,8 +1,8 @@
 ---
 import katex from "katex";
 
-const { formula = "" } = Astro.props;
-const html = katex.renderToString(formula, { throwOnError: false });
+const { f = "" } = Astro.props;
+const html = katex.renderToString(f, { throwOnError: false });
 ---
 
 <div class="container has-text-centered is-size-4 my-4">

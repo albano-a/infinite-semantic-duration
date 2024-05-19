@@ -5,8 +5,8 @@ author: Andre Albano
 slug: runge-kutta-method
 # Minimum 69 characters of description and maximum of 93 characters.
 description: "Runge-Kutta methods (2nd, 4th order) for solving ordinary differential equations."
-pubDate: 2024-05-13T23:00:00
-draft: true
+pubDate: 2024-05-18T23:00:00
+draft: false
 pageURL: "https://albano-dev.netlify.app/posts/runge-kutta-method"
 image:
   url: "/user-profile.png"
@@ -36,26 +36,30 @@ are the 2nd and 4th order.
 
 The way to solve these methods are very similar to the [Euler Method](/posts/euler-method-ode),
 but with more precision. The 2nd order Runge-Kutta method is also known
-as the midpoint method, and the 4th order Runge-Kutta method is the most 
+as the midpoint method, and the 4th order Runge-Kutta method is the most
 commonly used.
 
 The 2nd order Runge-Kutta method is given by:
 
-<LatexCenter f="
+<LatexCenter
+  f="
 w_{0} = \alpha \\
 w_{i+1} = w_{i} + h f(t_{i} + \frac{h}{2}, w_{i} + \frac{h}{2} f(t_{i}, w_{i}))
-" />
+"
+/>
 
 And the 4th order Runge-Kutta method is given by:
 
-<LatexCenter f="
+<LatexCenter
+  f="
 w_{0} = \alpha \\
 k_{1} = h f(t_{i}, w_{i}) \\
 k_{2} = h f(t_{i} + \frac{h}{2}, w_{i} + \frac{k_{1}}{2}) \\
 k_{3} = h f(t_{i} + \frac{h}{2}, w_{i} + \frac{k_{2}}{2}) \\
 k_{4} = h f(t_{i+1} + h, w_{i} + k_{3}) \\
 w_{i+1} = w_{i} + \frac{1}{6}(k_{1} + 2k_{2} + 2k_{3} + k_{4})
-" />
+"
+/>
 
 Yeah, it's a lot. Let's see an example and use the 4th Order Runge-Kutta Method,
 the same from the [Euler Method](/posts/euler-method-ode):
@@ -69,7 +73,8 @@ Just like the Euler Method, that means we have 10 iterations. Let's begin the fi
 
 <LatexCenter f="w_{0} = 0.5" />
 In the first iteration <Latex f="w_{i} = 0" /> and <Latex f="t_{i} = 0.0" />
-<LatexCenter f="
+<LatexCenter
+  f="
 w_{1}: \begin{cases}
 K_{1} = 0.2 \cdot (0.5 - 0.0^{2} + 1);\ K_{1} =  0.3\\
 K_{2} = 0.2 \cdot (0.5 + \frac{0.3}{2} - (0 + \frac{0.2}{2})^{2} + 1) ;\ K_{2} = 0.328 \\
@@ -77,8 +82,10 @@ K_{3} = 0.2 \cdot (0.5 + \frac{0.328}{2} - (0 + \frac{0.2}{2})^{2} + 1) ;\ K_{3}
 K_{4} = 0.2 \cdot ((0.5 + 0.3308) - (0.2)^{2} + 1) ;\ K_{4} = 0.3581 \\
 \end{cases} \\
 w_{1} = 0.5 + \frac{(0.3 + 2\cdot 0.328 + 2\cdot 0.3308 + 0.3581)}{6} = 0.8292
-" />
-<LatexCenter f="
+"
+/>
+<LatexCenter
+  f="
 w_{2}: \begin{cases}
 K_{1} = 0.2 \cdot (0.8292 - 0.2^{2} + 1);\ K_{1} =  0.3578 \\
 K_{2} = 0.2 \cdot (0.8292 + \frac{0.3578}{2} - (0.2 + \frac{0.2}{2})^{2} + 1) ;\ K_{2} = 0.3836 \\
@@ -86,9 +93,11 @@ K_{3} = 0.2 \cdot (0.8292 + \frac{0.3836}{2} - (0.2 + \frac{0.2}{2})^{2} + 1) ;\
 K_{4} = 0.2 \cdot ((0.8292 + 0.3862) - (0.4)^{2} + 1) ;\ K_{4} = 0.4111  \\
 \end{cases} \\
 w_{2} = 0.8292 + \frac{(0.3578 + 2\cdot 0.3836 + 2\cdot 0.3862 + 0.4111)}{6} = 1.2140
-" />
+"
+/>
 <LatexCenter f="\vdots" />
-<LatexCenter f="
+<LatexCenter
+  f="
 w_{10}: \begin{cases}
 K_{1} = 0.2 \cdot (4.8150 - 1.8^{2} + 1);\ K_{1} =  0.5150 \\
 K_{2} = 0.2 \cdot (4.8150 + \frac{0.5150}{2} - (1.8 + \frac{0.2}{2})^{2} + 1) ;\ K_{2} = 0.4925 \\
@@ -96,9 +105,11 @@ K_{3} = 0.2 \cdot (4.8150 + \frac{0.4925}{2} - (1.8 + \frac{0.2}{2})^{2} + 1) ;\
 K_{4} = 0.2 \cdot ((4.8150 + 0.4902) - (2.0)^{2} + 1) ;\ K_{4} = 0.4610  \\
 \end{cases} \\
 w_{10} = 4.8150 + \frac{(0.5150 + 2\cdot 0.4925 + 2\cdot 0.4902 + 0.4610)}{6} = 5.3053
-" />
+"
+/>
 
 The final result is <Latex f="y_{rk}(2) = 5.3053" />. If you recall the Euler Method result is
+
 <Latex f="y_{e}(2) = 4.8657" />.
 
 It's clear that the Runge-Kutta Method is more precise than Euler's method. That's because
@@ -106,3 +117,55 @@ of its higher order of accuracy, which means it can provide a more accurate appr
 over a given interval. It is designed to minimize the local truncation error, which is
 the error introduced at each step of the calculation. Also, higher order methods like this reduce the error
 more rapidly as the step size decreases.
+
+When we compare to the exact values, the approximations we found on the Runge Kutta method have a very small error:
+
+<div class="mb-2" style="display: flex; justify-content: center;">
+  ![runge kutta demonstration](/postImages/rungekutta4.png)
+</div>
+
+As we can see, the exact solution is overshadowed by the Runge Kutta method, showing it's
+extremely small error.
+
+## Implementation
+
+Below we have the implementation of 4th Order Runge Kutta method using Python.
+
+<CopyButton client:load text={`
+import numpy as np
+
+def runge_kutta(function, a, b, h, y0):
+\tt = np.linspace(a, b, int((b - a) / h) + 1)
+\tn = np.zeros(len(t))
+\tn[0] = y0
+
+\tfor i in range(0, len(t) - 1):
+\t\tk1 = h _ function(t[i], n[i])
+\t\tk2 = h _ function(t[i] + h / 2, n[i] + k1 / 2)
+\t\tk3 = h _ function(t[i] + h / 2, n[i] + k2 / 2)
+\t\tk4 = h _ function(t[i + 1], n[i] + k3)
+
+\t\tn[i + 1] = n[i] + (k1 + 2 _ k2 + 2 _ k3 + k4) / 6
+
+\treturn t, n
+`} />
+
+```python
+import numpy as np
+
+def runge_kutta(function, a, b, h, y0):
+    t = np.linspace(a, b, int((b - a) / h) + 1)
+    n = np.zeros(len(t))
+    n[0] = y0
+
+    for i in range(0, len(t) - 1):
+        k1 = h * function(t[i], n[i])
+        k2 = h * function(t[i] + h / 2, n[i] + k1 / 2)
+        k3 = h * function(t[i] + h / 2, n[i] + k2 / 2)
+        k4 = h * function(t[i + 1], n[i] + k3)
+
+        n[i + 1] = n[i] + (k1 + 2 * k2 + 2 * k3 + k4) / 6
+
+    return t, n
+
+```

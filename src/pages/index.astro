@@ -12,25 +12,14 @@ allPosts.sort(
     new Date(a.frontmatter.pubDate).getTime() -
     new Date(b.frontmatter.pubDate).getTime()
 );
+
+import messages from './messages.json';
 ---
 
 <BaseLayout pageTitle={pageTitle} pageURL={pageURL} description={description}>
   <Greeting
     client:load
-    messages={[
-      "Where is your crown, King Nothing?",
-      "I'm your life, and I no longer care.",
-      "I rule the midnight air, the destroyer!",
-      "MASTER! MASTER!",
-      "Exit light, enter night.",
-      "Life it seems, will fade away. Drifting further every day.",
-      "Forever trusting who we are, and nothing else matters.",
-      "All that is, ever, ever was, will be ever twisting, turning through the never.",
-      "You can take your fucking time",
-      "And though this is tragic, at least I found the end",
-      "Justice is served!",
-      "Of course we look back because we cannot bear to look forward",
-    ]}
+    messages={messages}
   />
   <hr />
   <div class="columns is-size-4">

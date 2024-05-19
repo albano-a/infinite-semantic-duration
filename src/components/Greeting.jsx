@@ -12,7 +12,7 @@ export default function Greeting({ messages }) {
       <div className="columns is-centered">
         <div className="column is-narrow is-full-mobile">
           <button
-            className="button is-rounded is-dark"
+            className="button is-rounded is-primary-dark"
             onClick={() => setGreeting(randomMessage())}
           >
             New Quote

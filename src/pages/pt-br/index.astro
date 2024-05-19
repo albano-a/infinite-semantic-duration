@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Greeting from "../../components/Greeting";
+import BlogPost from "../../components/BlogPost.astro";
+
+const pageTitle = "Infinite Semantic Duration";
+const pageURL = "https://albano-dev.netlify.app/";
+const description = "Blog de Geofísica e Programação";
+const allPosts = (await Astro.glob("../../pages/posts/*.{md,mdx}")).filter(post => !post.frontmatter.draft);
+allPosts.sort(
+  (a, b) =>
+    new Date(a.frontmatter.pubDate).getTime() -
+    new Date(b.frontmatter.pubDate).getTime()
+);
+
+import messages from '../_messages.json';
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+// defaultLocale is "es"
+const aboutURL = getRelativeLocaleUrl("pt-br", "about");
+const homeURL = getRelativeLocaleUrl("pt-br", "/");
+const blogURL = getRelativeLocaleUrl("pt-br", "blog");
+const tagsURL = getRelativeLocaleUrl("pt-br", "/tags/");
+---
+
+<BaseLayout pageTitle={pageTitle} pageURL={pageURL} description={description}>
+    <Greeting
+      client:load
+      messages={messages}
+    />
+    <hr />
+    <div class="columns is-size-4">
+      <div class="column">
+        <p class="has-text-justified">
+            Aqui é Infinite Semantic Duration. Você vai encontrar meu canto da internet. Eu vou postar sobre
+            assuntos aleatórios, sobre programação, geofísica, e etc. Clique em <a
+            href="/blog/">Blog</a
+          > Para ver os posts, ou clique em um dos posts abaixo.
+        </p>
+        <hr>
+  
+        <h2 class="is-size-3 has-text-weight-bold">
+          Últimos posts
+        </h2>
+        {
+          [...allPosts]
+            .reverse()
+            .reduce((rows, post, index) => {
+              if (index % 3 === 0) {
+                rows.push([]);
+              }
+              rows[rows.length - 1].push(
+                <div class="column">
+                  <BlogPost
+                    url={post.url}
+                    title={post.frontmatter.title}
+                    date={post.frontmatter.pubDate}
+                    description={post.frontmatter.description}
+                  />
+                </div>
+              );
+              return rows;
+            }, [])
+            .map((row, index) => <div class="columns">{row}</div>)
+        }
+      </div>
+    </div>
+  </BaseLayout>
+  

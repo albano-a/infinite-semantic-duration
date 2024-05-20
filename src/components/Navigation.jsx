@@ -1,8 +1,6 @@
 import { useState } from "preact/hooks";
-import { useI18n } from "astro/i18n";
 
 const Navigation = () => {
-  const { locale, t } = useI18n();
   const [isActive, setIsActive] = useState(false);
 
   const toggleIsActive = () => {
@@ -48,7 +46,7 @@ const Navigation = () => {
           class={`navbar-menu ${isActive ? "is-active" : ""}`}
         >
           <div class="navbar-start">
-            <a class="navbar-item" href={`/${locale}`}>
+            <a class="navbar-item" href={`/`}>
               {" "}
               Home{" "}
             </a>

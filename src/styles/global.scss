@@ -5,20 +5,19 @@ $primary: hsl(228, 58%, 70%);
 $secondary: hsl(228, 72%, 35%);
 $accent: hsl(228, 85%, 52%);
 
-
 // Path to Bulma's sass folder
 @use "bulma/sass" with (
   $family-primary: '"Segoe UI", sans-serif',
   $family-monospace: '"JetBrains Mono", sans-serif',
-  $family-secondary: '"Times New Roman", serif',
+  $family-secondary: '"PT Serif", serif',
   $primary: $background,
   $background: $background,
   $success: $primary,
   $text: $text,
   $info: $secondary,
   $link: $accent,
-  $card-radius: 1.25rem,
+  $card-radius: 1.25rem
 );
 
 // Import the Google Font
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");

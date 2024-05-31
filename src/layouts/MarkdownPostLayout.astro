@@ -14,8 +14,12 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
 );
 ---
 
-<BaseLayout pageTitle={frontmatter.title} pageURL={frontmatter.pageURL} description={frontmatter.description}>
-  <div class="container has-text-centered">
+<BaseLayout
+  pageTitle={frontmatter.title}
+  pageURL={frontmatter.pageURL}
+  description={frontmatter.description}
+>
+  <div class="container has-text-centered block">
     <p class="subtitle">
       Published on: <b>{formattedDate}</b>
     </p>
@@ -39,7 +43,7 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
   <div class="columns">
     <div class="column"></div>
     <div class="column is-three-fifths">
-      <div class="container is-size-4 is-family-secondary has-text-justified mt-5">
+      <div class="container is-size-4 has-text-justified block">
         <slot />
         <hr />
         <article class="media">

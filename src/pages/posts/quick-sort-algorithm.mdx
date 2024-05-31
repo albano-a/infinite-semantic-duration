@@ -1,27 +1,227 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: Quick Sort Algorithm
+title: QuickSort Algorithm
 author: Andre Albano
 slug: quick-sort-algorithm
 # Minimum 69 characters of description and maximum of 93 characters.
-description: "What is the Quick Sort algorithm and how it works?"
-pubDate: 2024-05-27T22:00:00
-draft: true
+description: "A dive into the efficient sorting algorithm and how it works."
+pubDate: 2024-05-31T12:00:00
+draft: false
 pageURL: "https://albano-dev.netlify.app/posts/runge-kutta-method"
 image:
   url: "/user-profile.png"
   alt: "writer logo"
-tags:
-  [
-    "algorithm",
-    "quick sort",
-    "sorting algorithms"
-    "python",
-    "programming",
-  ]
+tags: ["algorithm", "quick sort", "sorting algorithms", "python", "programming"]
 ---
 
 import CopyButton from "../../components/CodeBlock";
 import Latex from "../../components/Latex.astro";
 import LatexCenter from "../../components/LatexCenter.astro";
 
+Sorting algorithms are a fundamental aspect of computer science, used in various
+applications ranging from data organization to optimizing search algorithms. One
+of the most efficient sorting algorithms is QuickSort. In this post, we will explore
+the QuickSort algorithm in detail, understand how it works, and comparing it to
+Merge Sort (the focus of [my last post](/posts/merge-sort-algorithm) about sorting algorithms).
+
+## Algorithm Explanation
+
+QuickSort is a divide-and-conquer algorithm that works by selecting a 'pivot' element from the array
+and partitioning the other elements into two sub-arrays, according to whether they are less than or
+greater than the pivot. The sub-arrays are then sorted recursively.
+
+Here's a step-by-step explanation of the QuickSort algorithm:
+
+1. **Choose a Pivot**: Select an element from the array as the pivot. This can be any element, but common
+   strategies include choosing the first element, the last element, or a random element.
+2. **Partitioning**: Rearrange the elements in the array so that all elements less than the pivot are on its left,
+   and all elements greater than the pivot are on its right.
+3. **Recursively Apply**: Apply the above steps recursively to the sub-array of elements with smaller values
+   and the sub-array of elements with larger values.
+
+## QuickSort Pseudocode
+
+Here is the pseudocode for the QuickSort algorithm:
+
+```pseudocode
+function QuickSort(A, low, high)
+  if low < high
+    pivotIndex <- Partition(A, low, high)
+    QuickSort(A, low, pivotIndex - 1)
+    QuickSort(A, pivotIndex + 1, high)
+  return A
+
+function Partition(A, low, high)
+  pivot <- A[high]
+  i <- low - 1
+  for j <- low to high - 1
+      if A[j] < pivot
+          i <- i + 1
+          swap A[i] with A[j]
+  swap A[i + 1] with A[high]
+  return i + 1
+```
+
+In the pseudocode above, `A` is the array to be sorted, `low` is the starting index,
+and `high` is the ending index of the array. To call the function, you normally use:
+
+```pseudocode
+QuickSort(A, 0, A.length - 1)
+```
+
+## Complexity Analysis
+
+The time complexity of QuickSort depends on the pivot selection and partitioning process:
+
+- Best Case: <Latex f="O(n\log n)" />, occurs when the pivot always partitions the array into two equal halves.
+- Average Case: <Latex f="O(n\log n)" />, typical for a random pivot.
+- Worst Case: <Latex f="O(n^{2})" />, happens when the pivot results in the most unbalanced partitions
+  (e.g., when the smallest or largest element is always chosen as the pivot).
+
+The space complexity of QuickSort is <Latex f="O(\log n)" /> due to the stack space used by recursion.
+
+## Comparison with Merge Sort
+
+Unlike QuickSort, MergeSort has a guaranteed time complexity of <Latex f="O(n\log n)" /> but requires additional
+space for merging, making its space complexity <Latex f="O(n)" />.
+
+## Implementation
+
+### Python
+
+<CopyButton client:load text={`
+def quicksort(A, lo, hi):
+\t\t"""Implements the Lomuto partition
+\t\tscheme for Quick Sort algorithm"""
+\t\tif lo >= hi or lo < 0:
+\t\t\t\treturn "Undefined"
+
+\t\tp = partition(A, lo, hi)
+
+\t\tquicksort(A, lo, p - 1) # Left side of pivot
+\t\tquicksort(A, p + 1, hi) # Right side of pivot
+
+\t\treturn A
+
+def partition(A, lo, hi):
+\t\t"""Partition the array"""
+\t\tpivot = A[hi] # Choose the last element as the pivot
+\t\ti = lo
+\t\tfor j in range(lo, hi):
+\t\t\t\tif A[j] <= pivot:
+\t\t\t\t\t\tA[i], A[j] = A[j], A[i]
+\t\t\t\t\t\ti = i + 1
+
+\t\tA[i], A[hi] = A[hi], A[i]
+\t\treturn i # the pivot index
+
+ARRAY = [2, 5, 6, 4, 8, 3, 1, 9, 7]
+print(quicksort(ARRAY, 0, len(ARRAY) - 1))
+`} />
+
+```python
+def quicksort(A, lo, hi):
+    """Implements the Lomuto partition
+    scheme for Quick Sort algorithm"""
+    if lo >= hi or lo < 0:
+        return "Undefined"
+
+    p = partition(A, lo, hi)
+
+    quicksort(A, lo, p - 1)  # Left side of pivot
+    quicksort(A, p + 1, hi)  # Right side of pivot
+
+    return A
+
+def partition(A, lo, hi):
+    """Partition the array"""
+    pivot = A[hi]  # Choose the last element as the pivot
+    i = lo
+    for j in range(lo, hi):
+        if A[j] <= pivot:
+            A[i], A[j] = A[j], A[i]
+            i = i + 1
+
+    A[i], A[hi] = A[hi], A[i]
+    return i  # the pivot index
+
+ARRAY = [2, 5, 6, 4, 8, 3, 1, 9, 7]
+print(quicksort(ARRAY, 0, len(ARRAY) - 1))
+```
+
+### Rust
+
+<CopyButton client:load text={`
+fn quicksort<T: Ord>(arr: &mut [T]) {
+\t\tif arr.len() <= 1 {
+\t\t\t\treturn;
+\t\t}
+
+\t\tlet pivot = partition(arr);
+
+\t\tquicksort(&mut arr[..pivot]);
+\t\tquicksort(&mut arr[pivot + 1..]);
+}
+
+fn partition<T: Ord>(arr: &mut [T]) -> usize {
+\t\tlet pivot_index = arr.len() - 1;
+\t\tlet mut i = 0;
+
+\t\tfor j in 0..pivot_index {
+\t\t\t\tif arr[j] <= arr[pivot_index] {
+\t\t\t\t\t\tarr.swap(i, j);
+\t\t\t\t\t\ti += 1;
+\t\t\t\t}
+\t\t}
+
+\t\tarr.swap(i, pivot_index);
+\t\ti
+}
+
+fn main() {
+\t\tlet mut arr = [5, 2, 9, 1, 7, 6, 3, 8, 4];
+\t\tquicksort(&mut arr);
+\t\tprintln!("{:?}", arr);
+}
+`} />
+
+```rust
+fn quicksort<T: Ord>(arr: &mut [T]) {
+    if arr.len() <= 1 {
+        return;
+    }
+
+    let pivot = partition(arr);
+
+    quicksort(&mut arr[..pivot]);
+    quicksort(&mut arr[pivot + 1..]);
+}
+
+fn partition<T: Ord>(arr: &mut [T]) -> usize {
+    let pivot_index = arr.len() - 1;
+    let mut i = 0;
+
+    for j in 0..pivot_index {
+        if arr[j] <= arr[pivot_index] {
+            arr.swap(i, j);
+            i += 1;
+        }
+    }
+
+    arr.swap(i, pivot_index);
+    i
+}
+
+fn main() {
+    let mut arr = [5, 2, 9, 1, 7, 6, 3, 8, 4];
+    quicksort(&mut arr);
+    println!("{:?}", arr);
+}
+```
+
+## Conclusion
+
+QuickSort is a highly efficient and commonly used sorting algorithm, particularly
+suitable for large datasets due to its average-case time complexity of <Latex f="O(n\log n)" />.
+While its performance can degrade to <Latex f="O(n^{2})" /> in the worst case, with good pivot selection
+strategies, it remains one of the fastest sorting algorithms available.

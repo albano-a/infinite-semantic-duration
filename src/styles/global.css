@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* Bulma Utilities */
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Maven+Pro:wght@400..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oxygen:wght@300;400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 :root {
   --bulma-control-radius: var(--bulma-radius);
   --bulma-control-radius-small: var(--bulma-radius-small);
@@ -47,8 +47,8 @@
   --bulma-scheme-invert-ter-l: 14%;
   --bulma-scheme-invert-bis-l: 7%;
   --bulma-scheme-invert-l: 4%;
-  --bulma-family-primary: "Segoe UI", sans-serif;
-  --bulma-family-secondary: "PT Serif", serif;
+  --bulma-family-primary: "Oxygen", sans-serif;
+  --bulma-family-secondary: "Merriweather", serif;
   --bulma-family-code: "JetBrains Mono", sans-serif;
   --bulma-size-small: 0.75rem;
   --bulma-size-normal: 1rem;
@@ -947,8 +947,8 @@
     --bulma-scheme-invert-ter-l: 14%;
     --bulma-scheme-invert-bis-l: 7%;
     --bulma-scheme-invert-l: 4%;
-    --bulma-family-primary: "Segoe UI", sans-serif;
-    --bulma-family-secondary: "PT Serif", serif;
+    --bulma-family-primary: "Oxygen", sans-serif;
+    --bulma-family-secondary: "Merriweather", serif;
     --bulma-family-code: "JetBrains Mono", sans-serif;
     --bulma-size-small: 0.75rem;
     --bulma-size-normal: 1rem;
@@ -1864,8 +1864,8 @@
   --bulma-scheme-invert-ter-l: 14%;
   --bulma-scheme-invert-bis-l: 7%;
   --bulma-scheme-invert-l: 4%;
-  --bulma-family-primary: "Segoe UI", sans-serif;
-  --bulma-family-secondary: "PT Serif", serif;
+  --bulma-family-primary: "Oxygen", sans-serif;
+  --bulma-family-secondary: "Merriweather", serif;
   --bulma-family-code: "JetBrains Mono", sans-serif;
   --bulma-size-small: 0.75rem;
   --bulma-size-normal: 1rem;
@@ -21919,15 +21919,15 @@ has-background-danger.is-hoverable:active {
 }
 
 .is-family-primary {
-  font-family: '"Segoe UI", sans-serif' !important;
+  font-family: '"Oxygen", sans-serif' !important;
 }
 
 .is-family-secondary {
-  font-family: '"PT Serif", serif' !important;
+  font-family: '"Merriweather", serif' !important;
 }
 
 .is-family-sans-serif {
-  font-family: "Inter", "SF Pro", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  font-family: '"Exo 2", sans-serif' !important;
 }
 
 .is-family-monospace {

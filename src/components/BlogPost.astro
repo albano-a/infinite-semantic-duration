@@ -11,7 +11,8 @@ const formattedDate = new Date(date).toLocaleString("en-US", {
 ---
 
 <!-- <li ><a href={url}>{title} - {formattedDate}</a></li> -->
-<div class="card is-shadowless has-background-text-dark">
+<a href={url}>
+<div class="card custom-card ">
   <div class="card-header">
     <p class="card-header-title is-centered">{title}</p>
   </div>
@@ -19,7 +20,24 @@ const formattedDate = new Date(date).toLocaleString("en-US", {
     <p class="has-text-text-light has-text-centered">{description}</p>
     <p class="is-size-5 has-text-link-light has-text-centered">Posted on {formattedDate}</p>
   </div>
-  <div class="card-footer">
+  <div class="card-footer custom-card-footer">
     <a href={url} class="card-footer-item">Read More</a>
   </div>
 </div>
+</a>
+<style>
+  .custom-card {
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #14161a;
+  }
+
+  .custom-card:hover {
+    transform: translateY(-10px) scale(1.00);
+    border: 1px solid #6380f2;
+    box-shadow: 0 0.5em 1em -0.125em #6380f2; /* Adjust as needed */
+  }
+
+  .custom-card-footer:hover {
+    background-color: hsl(224, 86%, 15%);
+  }
+</style>

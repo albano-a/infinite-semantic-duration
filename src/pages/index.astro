@@ -6,36 +6,47 @@ import BlogPost from "../components/BlogPost.astro";
 const pageTitle = "Infinite Semantic Duration";
 const pageURL = "https://albano-dev.netlify.app/";
 const description = "Geophysics and Programming Blog";
-const allPosts = (await Astro.glob("../pages/posts/*.{md,mdx}")).filter(post => !post.frontmatter.draft);
+const allPosts = (await Astro.glob("../pages/posts/*.{md,mdx}")).filter(
+  (post) => !post.frontmatter.draft
+);
 allPosts.sort(
   (a, b) =>
     new Date(a.frontmatter.pubDate).getTime() -
     new Date(b.frontmatter.pubDate).getTime()
 );
 
-import messages from './_messages.json';
+import messages from "./_messages.json";
 ---
 
 <BaseLayout pageTitle={pageTitle} pageURL={pageURL} description={description}>
-  <Greeting
-    client:load
-    messages={messages}
-  />
+  <Greeting client:load messages={messages} />
   <hr />
   <div class="columns is-size-4">
     <div class="column">
       <p class="has-text-justified">
-        This is Infinite Semantic Duration. Here, you will find my personal corner of the internet. Here I
-        will post random stuff, about coding, geophysics, programming, and etc. Click on <a
-          href="/blog/">Blog</a
-        >
-        to see the posts, or click in one of the posts bellow.
+        <dl class="has-text-justified">
+          <dt class="is-size-3"><b>Infinite Semantic Duration</b></dt>
+          <dd>
+            <span class="is-size-5">/ˈɪnfɪnɪt sɪˈmæntɪk djʊˈreɪʃən/</span><br
+            /><i class="is-size-5">noun</i><br />A concept in temporal semantics
+            referring to an event or state with no defined endpoint. It is often
+            used in theoretical linguistics and philosophy to describe processes
+            or conditions that are perceived as ongoing or perpetual, without a
+            clear boundary in time.
+          </dd>
+        </dl>
       </p>
-      <hr>
+      <p class="has-text-justified">
+        This is my personal corner of the internet where I share random thoughts
+        about coding, geophysics, programming, and more.
+      </p>
+      <p class="has-text-justified">
+        Click on <a href="/blog/">Blog</a>
+        to see the posts, or choose from one of the posts below.
+      </p>
+      <hr />
 
-      <h2 class="is-size-3 has-text-weight-bold">
-        Last posts
-      </h2>
+      <h2 class="is-size-3 has-text-weight-bold">Last posts</h2>
       {
         [...allPosts]
           .reverse()

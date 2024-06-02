@@ -10,7 +10,15 @@ pubDate: 2024-05-12T23:00:00
 image:
   url: "/user-profile.png"
   alt: "write logo"
-tags: ["programming", "algorithm", "sorting", "merge sort", "python"]
+tags:
+  [
+    "programming",
+    "algorithm",
+    "sorting",
+    "sorting algorithms",
+    "merge sort",
+    "python",
+  ]
 ---
 
 import CopyButton from "../../components/CodeBlock";
@@ -85,6 +93,19 @@ function merge(left, right) is
         right := rest(right)
     return result
 ```
+
+## Visualization
+
+The video below showcases the merge sort algorithm in a random array of 50 elements.
+
+<div class="columns is-centered">
+  <div class="column is-four-fifths">
+    <video class="has-text-centered" width="640" height="360" controls>
+      <source src="/videos/merge_sort.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
 
 ## Implementation
 

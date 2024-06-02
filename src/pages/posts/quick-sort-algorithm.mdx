@@ -11,7 +11,15 @@ pageURL: "https://albano-dev.netlify.app/posts/runge-kutta-method"
 image:
   url: "/user-profile.png"
   alt: "writer logo"
-tags: ["algorithm", "quick sort", "sorting algorithms", "python", "programming"]
+tags:
+  [
+    "algorithm",
+    "quick sort",
+    "sorting",
+    "sorting algorithms",
+    "python",
+    "programming",
+  ]
 ---
 
 import CopyButton from "../../components/CodeBlock";
@@ -79,6 +87,19 @@ The time complexity of QuickSort depends on the pivot selection and partitioning
   (e.g., when the smallest or largest element is always chosen as the pivot).
 
 The space complexity of QuickSort is <Latex f="O(\log n)" /> due to the stack space used by recursion.
+
+## Visualization
+
+The video below showcases the merge sort algorithm in a random array of 50 elements.
+
+<div class="columns is-centered">
+  <div class="column is-four-fifths">
+    <video class="has-text-centered" width="640" height="360" controls>
+      <source src="/videos/quick_sort.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
 
 ## Comparison with Merge Sort
 

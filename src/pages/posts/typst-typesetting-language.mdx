@@ -1,0 +1,63 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: Typst
+author: Andre Albano
+slug: typst
+# Minimum 69 characters of description and maximum of 93 characters.
+description: "What it is and why its better than LaTeX."
+pubDate: 2024-06-23T22:00:00
+draft: false
+pageURL: "https://albano-dev.netlify.app/posts/typst-typesetting-language"
+image:
+  url: "/user-profile.png"
+  alt: "writer logo"
+tags: ["algorithm"]
+---
+
+import LatexCenter from "../../components/LatexCenter.astro";
+
+Typst is a markup language for typesetting documents. It is designed to be easy to learn, fast, and versatile.
+Typst takes text files with markup in them and outputs PDFs ([Typst Docs](https://typst.app/docs/tutorial/)). For that reason
+it is superior to LaTeX in many ways.
+
+First, according to the repository that holds Typst, "We think it's time for a system that matches the power of LaTeX, is easy to learn and use, all while being fast enough to realize instant preview.". For that reason alone it's already 10x
+better than LaTeX. It was already time for someone, in 40 years, to release a true competitor.
+
+Typst removes the historical baggage of LaTeX. While LaTeX depends on dozens of outdated packages, obscure syntax, and legacy TeX internals, Typst was built from scratch with modern tooling in mind. Its syntax is cleaner, closer to Markdown, and readable even by people unfamiliar with markup languages. You don't spend hours learning how to do simple things like aligning figures or tweaking page margins.
+
+It supports instant preview and integrates tightly with its own web app. There's no need for separate editors, compilers, or error logs from hell. You write, and it compiles live — no waiting, no cryptic error that you don't understand. This is particularly useful for writing scientific papers, resumes, reports, and even books, without fighting the tooling.
+
+It has built-in support for functions, variables, conditionals, and loops. Unlike LaTeX where logic feels hacked-in through macros, Typst treats computation as a first-class citizen. This makes dynamic content generation far more approachable and readable. For users who build templates or automate document generation, Typst is miles ahead in simplicity and power.
+
+In short, it is designed for the 21st century, while LaTeX was built for the 80s. It served its purpose, but it's archaic and bloated by modern standards (you already tried to explain latex to someone that is not very knowleadgable?). Typst delivers the same output quality with a **better developer experience**, **tighter feedback loop**, and **drastically reduced friction**. If you're starting a new project today, Typst is the obvious choice by far.
+
+# Direct Comparison
+
+## Section Headings
+
+```latex
+\section{Introduction}
+```
+
+```typst
+= Introduction
+```
+
+---
+
+## Fractions
+
+<LatexCenter f="\frac{(b + B) \cdot h}{2}" />
+
+Latex
+
+```latex
+\frac{(b + B) \cdot h}{2}
+```
+
+Typst
+
+```typst
+frac((b + B) dot h, 2) // or
+((b + B) dot h) / 2
+```

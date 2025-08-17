@@ -15,42 +15,54 @@ const identity = {
 
 const skills = [
   "Python",
+  "Rust",
+  "JavaScript",
+  "C/C++",
+  "Svelte",
+  "React",
   "HTML",
   "CSS",
-  "C/C++",
-  "JavaScript",
-  "Rust",
   "Astro",
 ];
 ---
 
 <BaseLayout pageTitle={pageTitle} pageURL={pageURL} description={description}>
-  <div class="container has-text-text-light has-text-justified">
-    <div class="content is-size-4">
-      <p>
+  <div class="max-w-6xl mx-auto px-6 py-8 text-gray-100">
+    <div class="text-xl space-y-6">
+      <p class="leading-relaxed">
         My name is Andre, I'm a Brazilian geophysicist that loves programming
         and solving problems. My favorites band is <a
-          href="https://www.metallica.com/">Metallica</a
+          href="https://www.metallica.com/"
+          class="text-blue-400 hover:text-blue-300 underline transition-colors"
+          >Metallica</a
         >, and my favorite singers are <a
-          href="https://twitter.com/iameden?lang=en">Eden</a
+          href="https://twitter.com/iameden?lang=en"
+          class="text-blue-400 hover:text-blue-300 underline transition-colors"
+          >Eden</a
         > and
-        <a href="https://twitter.com/sushitrash?lang=en">Joji</a> (At the bottom
-        of this page, you'll discover my latest recommended albums. Be sure to check
-        back frequently for an updated list!). In my free time I like to code, watch
-        videos, play games, and write little coding projects. Go to my GitHub to
-        see my most recents projects: <a
-          href="https://github.com/albano-a?tab=repositories">GitHub</a
+        <a
+          href="https://twitter.com/sushitrash?lang=en"
+          class="text-blue-400 hover:text-blue-300 underline transition-colors"
+          >Joji</a
+        > (At the bottom of this page, you'll discover my latest recommended albums.
+        Be sure to check back frequently for an updated list!). In my free time I
+        like to code, watch videos, play games, and write little coding projects.
+        Go to my GitHub to see my most recents projects: <a
+          href="https://github.com/albano-a?tab=repositories"
+          class="text-blue-400 hover:text-blue-300 underline transition-colors"
+          >GitHub</a
         >. I would be happy if you wanted to contribute in any of those
         projects.
       </p>
-      <p>
+
+      <p class="leading-relaxed">
         This site is my personal blog, and also kind of a portfolio. I will
         probably sporadically post here, or just post everyday or something for
         the next month and then just forget about it.
       </p>
 
-      <p>Here are a few facts about me:</p>
-      <ul>
+      <p class="leading-relaxed">Here are a few facts about me:</p>
+      <ul class="list-disc list-inside space-y-2 ml-4">
         <li>My name is {identity.firstName}</li>
         <li>
           I live in {identity.country} and I work as a {identity.occupation}.
@@ -64,24 +76,34 @@ const skills = [
           )
         }
       </ul>
-      <p>I have knowledges on these languages/frameworks:</p>
-      <div class="columns has-text-weight-bold">
+
+      <p class="leading-relaxed">
+        I have knowledges on these languages/frameworks:
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 my-8">
         {
           skills.map((skill) => (
-            <div class="is-size-3 column has-text-centered skill">{skill}</div>
+            <div class="bg-gray-800 rounded-lg p-4 text-center font-bold text-xl hover:bg-gray-700 transition-colors">
+              {skill}
+            </div>
           ))
         }
       </div>
-      <p>
-        The most used programming language by me is Python. But other languages will still
-        be used too, like Rust, JavaScript and others.
+
+      <p class="leading-relaxed">
+        The most used programming language by me is Python. But other languages
+        will still be used too, like Rust, JavaScript and others.
       </p>
-      <hr />
-      <h2 class="">Here's a curated selection of must-listen albums:</h2>
-      <div class="columns has-text-centered">
-        <div class="column">
+
+      <hr class="border-gray-700 my-8" />
+
+      <h2 class="text-2xl font-bold mb-6">
+        Here's a curated selection of must-listen albums:
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="flex justify-center">
           <iframe
-            style="border-radius:12px"
+            class="rounded-xl"
             src="https://open.spotify.com/embed/album/6Eycw3dwcDMEFSqkUvLQ7g?utm_source=generator"
             width="100%"
             height="352"
@@ -90,9 +112,9 @@ const skills = [
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"></iframe>
         </div>
-        <div class="column">
+        <div class="flex justify-center">
           <iframe
-            style="border-radius:12px"
+            class="rounded-xl"
             src="https://open.spotify.com/embed/album/5mIImcsuqpiSXg8XvFr81I?utm_source=generator"
             width="100%"
             height="352"
@@ -101,9 +123,9 @@ const skills = [
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"></iframe>
         </div>
-        <div class="column">
+        <div class="flex justify-center">
           <iframe
-            style="border-radius:12px"
+            class="rounded-xl"
             src="https://open.spotify.com/embed/album/6vR1cBQ9Ss7jXzwr7aUmvd?utm_source=generator"
             width="100%"
             height="352"

@@ -22,7 +22,7 @@ tags:
   ]
 ---
 
-import CopyButton from "../../components/CodeBlock";
+import CodeBlock from "../../components/CodeBlock.svelte";
 import Latex from "../../components/Latex.astro";
 import LatexCenter from "../../components/LatexCenter.astro";
 
@@ -110,7 +110,7 @@ space for merging, making its space complexity <Latex f="O(n)" />.
 
 ### Python
 
-<CopyButton client:load text={`
+<CodeBlock client:load text={`
 def quicksort(A, lo, hi):
 \t\t"""Implements the Lomuto partition
 \t\tscheme for Quick Sort algorithm"""
@@ -172,7 +172,7 @@ print(quicksort(ARRAY, 0, len(ARRAY) - 1))
 
 ### Rust
 
-<CopyButton client:load text={`
+<CodeBlock client:load text={`
 fn quicksort<T: Ord>(arr: &mut [T]) {
 \t\tif arr.len() <= 1 {
 \t\t\t\treturn;

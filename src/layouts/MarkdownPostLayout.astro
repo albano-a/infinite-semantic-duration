@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import PostContent from "../components/PostContent.svelte";
 const { frontmatter } = Astro.props;
 const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
   "en-US",
@@ -19,58 +20,72 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
   pageURL={frontmatter.pageURL}
   description={frontmatter.description}
 >
-  <div class="container has-text-centered block">
-    <p class="subtitle">
-      Published on: <b>{formattedDate}</b>
-    </p>
-    <p class="is-size-4 has-text-centered">
-      <em>{frontmatter.description}</em>
-    </p>
-    <p class="subtitle">Written by: <b>{frontmatter.author}</b></p>
+  <div class="contain mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+    <!-- Header -->
+    <header class="text-center mb-8 space-y-4">
+      <p class="text-lg text-gray-300">
+        Published on: <span class="font-semibold text-white"
+          >{formattedDate}</span
+        >
+      </p>
+      <p class="text-xl lg:text-2xl text-gray-200 italic leading-relaxed">
+        {frontmatter.description}
+      </p>
+      <p class="text-lg text-gray-300">
+        Written by: <span class="font-semibold text-white"
+          >{frontmatter.author}</span
+        >
+      </p>
 
-    <div class="tags is-flex is-justify-content-center">
-      Tags:
-      {
-        frontmatter.tags.map((tag) => (
-          <span class="tag is-medium has-background-success-dark is-rounded">
-            <a href={`/tags/${tag}`}>{tag}</a>
-          </span>
-        ))
-      }
-    </div>
-  </div>
-  <hr />
-  <div class="columns">
-    <div class="column"></div>
-    <div class="column is-three-fifths">
-      <div class="container is-size-4 has-text-justified block">
-        <slot />
-        <hr />
-        <article class="media">
-          <figure class="media-left">
-            <img
-              class=""
-              src={frontmatter.image.url}
-              width="128"
-              alt={frontmatter.image.alt}
-            />
-          </figure>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>André Albano</strong>
-                <small>@onablaerdna</small>
-                <br />
-                I'm a Geophysicist and Coder. I work with seismic inversion algorithms,
-                software development, well log analysis and so on.
-              </p>
-            </div>
-          </div>
-        </article>
-        <div id="disqus_thread"></div>
+      <!-- Tags -->
+      <div class="flex flex-wrap justify-center items-center gap-3 pt-2">
+        <span class="text-gray-200 font-medium">Tags:</span>
+        {
+          frontmatter.tags.map((tag) => (
+            <a
+              href={`/tags/${tag}`}
+              class="inline-block px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-sm font-medium transition-colors duration-200 transform hover:scale-105"
+            >
+              {tag}
+            </a>
+          ))
+        }
       </div>
-    </div>
-    <div class="column"></div>
+    </header>
+
+    <hr class="border-gray-700 mb-8" />
+
+    <!-- Content -->
+    <main
+      class="prose-2xl prose-invert prose-code text-justify mb-8 text-gray-100 prose-headings:text-white prose-strong:text-white prose-code:text-emerald-400 prose-pre:bg-gray-800 prose-blockquote:text-gray-200 prose-blockquote:border-emerald-500"
+    >
+      <slot />
+    </main>
+
+    <hr class="border-gray-700 my-8" />
+
+    <!-- Author bio -->
+    <section class="bg-gray-800 rounded-xl p-6 mb-8 shadow-lg">
+      <div class="flex flex-col sm:flex-row items-start gap-6">
+        <img
+          class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-full shadow-md mx-auto sm:mx-0 flex-shrink-0"
+          src={frontmatter.image.url}
+          alt={frontmatter.image.alt}
+        />
+        <div class="flex-1 text-center sm:text-left">
+          <h3 class="text-xl font-bold text-white mb-2">André Albano</h3>
+          <p class="text-emerald-400 font-medium mb-3">@onablaerdna</p>
+          <p class="text-gray-300 leading-relaxed">
+            Geophysicist and developer specializing in seismic inversion
+            algorithms, software development, and well log analysis.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comments -->
+    <section id="disqus_thread" class="bg-gray-800 rounded-lg shadow-lg p-6">
+    </section>
   </div>
 </BaseLayout>
 

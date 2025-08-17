@@ -11,34 +11,52 @@ const formattedDate = new Date(date).toLocaleString("en-US", {
 ---
 
 <!-- <li ><a href={url}>{title} - {formattedDate}</a></li> -->
-<a href={url}>
-<div class="card custom-card ">
-  <div class="card-header">
-    <p class="card-header-title is-centered">{title}</p>
-  </div>
-  <div class="card-content">
-    <p class="has-text-text-light has-text-centered">{description}</p>
-    <p class="is-size-5 has-text-link-light has-text-centered">Posted on {formattedDate}</p>
-  </div>
-  <div class="card-footer custom-card-footer">
-    <a href={url} class="card-footer-item">Read More</a>
-  </div>
-</div>
+<a href={url} class="block group">
+  <article
+    class="bg-white dark:bg-gray-900/25 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-400 dark:hover:border-blue-500 h-80 flex flex-col"
+  >
+    <header class="px-6 py-5 border-b border-gray-100 dark:border-gray-800">
+      <h2
+        class="text-2xl text-center font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200"
+      >
+        {title}
+      </h2>
+    </header>
+
+    <div class="px-6 py-5 space-y-4 flex-1 flex flex-col justify-between">
+      <p
+        class="text-gray-600 text-lg font-semibold text-center dark:text-gray-300 leading-relaxed line-clamp-3"
+      >
+        {description}
+      </p>
+      <time
+        class="text-sm font-medium text-blue-600 dark:text-blue-400 flex items-center justify-center"
+      >
+        <span class="mr-2">📅</span>
+        {formattedDate}
+      </time>
+    </div>
+
+    <footer
+      class="px-6 py-4 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-800"
+    >
+      <span
+        class="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-200"
+      >
+        Read More
+        <svg
+          class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </span>
+    </footer>
+  </article>
 </a>
-
-<style>
-  .custom-card {
-    transition: all 0.3s ease-in-out;
-    border: 1px solid #14161a;
-  }
-
-  .custom-card:hover {
-    transform: translateY(-10px) scale(1.00);
-    border: 1px solid #6380f2;
-    box-shadow: 0 0.5em 1em -0.125em #6380f2; /* Adjust as needed */
-  }
-
-  .custom-card-footer:hover {
-    background-color: hsl(224, 86%, 15%);
-  }
-</style>

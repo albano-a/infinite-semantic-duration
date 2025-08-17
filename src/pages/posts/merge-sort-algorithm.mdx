@@ -21,7 +21,7 @@ tags:
   ]
 ---
 
-import CopyButton from "../../components/CodeBlock";
+import CodeBlock from "../../components/CodeBlock.svelte";
 
 Merge sort is a highly effective way to sort data. In many cases,
 it maintains the order of equal elements from the input to the output, making it what's called a stable sort.
@@ -111,7 +111,7 @@ The video below showcases the merge sort algorithm in a random array of 50 eleme
 
 ### Python
 
-<CopyButton client:load text={`
+<CodeBlock client:load text={`
 def merge(left, right):
 \tresult = []
 

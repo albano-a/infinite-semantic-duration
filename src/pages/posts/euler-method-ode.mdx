@@ -21,7 +21,7 @@ tags:
   ]
 ---
 
-import CopyButton from "../../components/CodeBlock";
+import CodeBlock from "../../components/CodeBlock.svelte";
 import Latex from "../../components/Latex.astro";
 import LatexCenter from "../../components/LatexCenter.astro";
 
@@ -135,7 +135,7 @@ Below we can see the plot of the exact solution and the Euler method approximati
 
 And below, we can see the Python code that implements the Euler method for the ODE:
 
-<CopyButton client:load text={`
+<CodeBlock client:load text={`
 def euler(edo, a, b, h, y0):
 \tt = np.linspace(a, b, int(np.ceil(b-a)/h)+1)
 \tn = np.zeros(len(t))

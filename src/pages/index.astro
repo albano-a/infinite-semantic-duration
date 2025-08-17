@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Greeting from "../components/Greeting";
+import Greeting from "../components/Greeting.svelte";
 import BlogPost from "../components/BlogPost.astro";
 
 const pageTitle = "Infinite Semantic Duration";
@@ -14,60 +14,74 @@ allPosts.sort(
     new Date(a.frontmatter.pubDate).getTime() -
     new Date(b.frontmatter.pubDate).getTime()
 );
-
-import messages from "./_messages.json";
 ---
 
 <BaseLayout pageTitle={pageTitle} pageURL={pageURL} description={description}>
-  <Greeting client:load messages={messages} />
+  <Greeting client:load />
   <hr />
-  <div class="columns is-size-4">
-    <div class="column">
-      <p class="has-text-justified">
-        <dl class="has-text-justified">
-          <dt class="is-size-3"><b>Infinite Semantic Duration</b></dt>
-          <dd>
-            <span class="is-size-5">/ˈɪnfɪnɪt sɪˈmæntɪk djʊˈreɪʃən/</span><br
-            /><i class="is-size-5">noun</i><br />A concept in temporal semantics
-            referring to an event or state with no defined endpoint. It is often
-            used in theoretical linguistics and philosophy to describe processes
-            or conditions that are perceived as ongoing or perpetual, without a
-            clear boundary in time.
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="space-y-6">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+        <dl class="space-y-2">
+          <dt class="text-3xl font-bold text-gray-900 dark:text-white">
+            Infinite Semantic Duration
+          </dt>
+          <dd class="space-y-2">
+            <span class="text-md text-gray-600 dark:text-gray-300 font-mono">
+              /ˈɪnfɪnɪt sɪˈmæntɪk djʊˈreɪʃən/
+            </span>
+            <div class="text-sm italic text-gray-700 dark:text-gray-300">
+              noun
+            </div>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              A concept in temporal semantics referring to an event or state
+              with no defined endpoint. It is often used in theoretical
+              linguistics and philosophy to describe processes or conditions
+              that are perceived as ongoing or perpetual, without a clear
+              boundary in time.
+            </p>
           </dd>
         </dl>
-      </p>
-      <p class="has-text-justified">
-        This is my personal corner of the internet where I share random thoughts
-        about coding, geophysics, programming, and more.
-      </p>
-      <p class="has-text-justified">
-        Click on <a href="/blog/">Blog</a>
-        to see the posts, or choose from one of the posts below.
-      </p>
-      <hr />
+      </div>
 
-      <h2 class="is-size-3 has-text-weight-bold">Last posts</h2>
-      {
-        [...allPosts]
-          .reverse()
-          .reduce((rows, post, index) => {
-            if (index % 3 === 0) {
-              rows.push([]);
-            }
-            rows[rows.length - 1].push(
-              <div class="column">
-                <BlogPost
-                  url={post.url}
-                  title={post.frontmatter.title}
-                  date={post.frontmatter.pubDate}
-                  description={post.frontmatter.description}
-                />
-              </div>
-            );
-            return rows;
-          }, [])
-          .map((row, index) => <div class="columns">{row}</div>)
-      }
+      <div class="prose prose-lg max-w-none dark:prose-invert">
+        <p>
+          This is my personal corner of the internet where I share random
+          thoughts about coding, geophysics, programming, and more.
+        </p>
+        <p>
+          Click on <a
+            href="/blog/"
+            class="text-blue-600 dark:text-blue-400 hover:underline">Blog</a
+          >
+          to see the posts, or choose from one of the posts below.
+        </p>
+      </div>
+
+      <hr class="border-gray-200 dark:border-gray-700" />
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          Latest Posts
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            [...allPosts]
+              .reverse()
+              .slice(0, 6)
+              .map((post) => (
+                <div class="h-full">
+                  <BlogPost
+                    url={post.url}
+                    title={post.frontmatter.title}
+                    date={post.frontmatter.pubDate}
+                    description={post.frontmatter.description}
+                  />
+                </div>
+              ))
+          }
+        </div>
+      </section>
     </div>
   </div>
 </BaseLayout>

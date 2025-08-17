@@ -2,10 +2,10 @@
 import katex from "katex";
 
 const { f = "" } = Astro.props;
-const html = katex.renderToString(f, { throwOnError: false });
+const html = katex.renderToString(`\\Large ${f}`, { throwOnError: false });
 ---
 
-<div class="container has-text-centered is-size-4 my-4">
+<div class="container text-center text-xl my-4">
   <span set:html={html} class="" />
 </div>
 

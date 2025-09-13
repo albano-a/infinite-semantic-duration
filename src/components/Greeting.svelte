@@ -13,12 +13,12 @@
     <p
       class="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wide font-medium"
     >
-      Quotes from Metallica, Eden, Joji and others
+      Quotes from my favorite artists
     </p>
     <blockquote
-      class="text-xl md:text-2xl font-light text-gray-800 dark:text-gray-200 italic leading-relaxed min-h-[3rem] flex items-center justify-center"
+      class="text-xl md:text-2xl font-semibold text-gray-800 dark:text-gray-200 italic leading-relaxed min-h-[3rem] flex items-center justify-center"
     >
-      "{greeting}"
+      {greeting}
     </blockquote>
   </div>
   <button
